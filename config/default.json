@@ -1,0 +1,13 @@
+{
+    "server": {
+        "port": 4000
+    },
+    "database": {
+        "DB_NAME": "SuperMag",
+        "DB_USER": "frontol",
+        "DB_PASSWORD": "Step55Plus",
+        "DB_HOST": "kappa",
+        "DB_PORT": 1433,
+        "DB_DIALECT": "mssql"
+    }
+}
