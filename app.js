@@ -4,7 +4,11 @@ const config = require('config')
 
 const app = express()
 
-app.use('/auth', require('./routes/auth_router'))
+app.use(express.json({ extended: true }))
+
+app.use(express.json({extended: true}))
+app.use('/find', require('./routes/main_router'))
+
 
 
 const PORT = config.get('server.port') || 5000

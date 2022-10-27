@@ -1,10 +1,15 @@
 import React from 'react'
+import { userRoutes } from "./Routes";
+import { BrowserRouter as Router } from "react-router-dom";
 
 function App() {
+  const routes = userRoutes()
   return (
-    <div>
-      <h1>12qweqwe3</h1>
-    </div>
+    <Router>
+      <div>
+        {routes}
+      </div>
+    </Router>
   )
 }
 

@@ -1,7 +1,7 @@
 const {Router}= require('express')
 const router = Router()
 const config = require('config')
-
+const {sendQuery} = require('../db')
 // /auth/register
 // router.post('/register', async (req, res) =>{
 //     try{
@@ -14,15 +14,19 @@ const config = require('config')
 //     }
 // })
 
-// /auth/login
-router.post('/login', async (req, res) =>{
+// /find
+router.post('/mag', async (req, res) =>{
     
     try{
-        const {username, password} = req.body
-        if (!username){
-            return res.status(400).json({message: 'username d'})
+        console.log(req.body)
+        const {mag_number} = req.body
+        
+        if (!mag_number){
+            return res.status(400).json({message: 'enter number'})
         }
-        const user = config.get(`users.${username}`)
+        query = "SELECT * from marafettPrice where shopCode = \'" + mag_number + "\'"
+        result = await sendQuery(query)
+        console.log(result)
 
 
     }catch(e){
