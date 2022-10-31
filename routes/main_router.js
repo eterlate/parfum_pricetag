@@ -14,7 +14,7 @@ const {sendQuery} = require('../db')
 //     }
 // })
 
-// /find
+// /find/mag
 router.post('/mag', async (req, res) =>{
     try{
         const {mag_number} = req.body
@@ -31,6 +31,7 @@ router.post('/mag', async (req, res) =>{
     }
 })
 
+// /find/items
 router.post('/items', async (req, res) =>{
     try{
         const {mag_number, doc_number} = req.body

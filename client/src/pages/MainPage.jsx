@@ -1,5 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
+import { Link } from 'react-router-dom'
+import { PrintContext, usePrintContext } from '../context/PrintContext'
 import { useHttp } from '../hooks/http.hook'
+import PrintPage from './PrintPage'
+
 
 const MainPage = () => {
     const {loading, error, request} = useHttp()
@@ -7,6 +11,8 @@ const MainPage = () => {
         mag_number: '',
         doc_number: ''
     })
+
+
 
     const [mags, setMags] = useState([])
     const [items, setItems] = useState([])
@@ -33,6 +39,10 @@ const MainPage = () => {
         }catch(e){}
     }
 
+
+    
+
+
     return (
         <div>
             <h1>MainPage</h1>
@@ -52,8 +62,11 @@ const MainPage = () => {
                 onChange={changeHandler}
                 placeholder='Введите номер документа'
                 />
+
                 <button onClick={formHandler} disabled={loading}>Найти</button>
             </form>
+            <Link to='/print' state={items}>Очко</Link>
+
 
             {items.length > 0 ? 
                 <ul>
@@ -68,11 +81,6 @@ const MainPage = () => {
                     )}
                 </ul>  
             }
-            
-            
-           
-            
-            
         </div>
     )
 }
