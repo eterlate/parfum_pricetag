@@ -3,3 +3,77 @@
     display: none;
     }
 }
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+
+.tagContainer{
+    width: 1000px;
+    margin: 50px;
+}
+
+.columgTags{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.rowTags{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+
+
+.priceTag{
+    border: 1px solid black;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    flex-wrap: nowrap;
+}
+
+.priceTagBottom{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+#itemPrice{
+    font-size: 32px;
+    font-family: 'Times New Roman', Times, serif;
+}
+#itemName{
+    font-size: 12px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: normal;
+}
+#docDate{
+    font-size: 8px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+}
+#itemCode{
+    font-size: 8px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+}

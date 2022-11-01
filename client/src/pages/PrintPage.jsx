@@ -1,20 +1,20 @@
 import React from 'react'
-import { useContext } from 'react'
-import { PrintContext } from '../context/PrintContext'
-import PrintPageItem from './PrintPageItem'
 import { useLocation } from 'react-router-dom'
+import PriceTag from './PriceTag'
 
 function PrintPage () {
     const location = useLocation()
     
-    let items = location.state
+    const items = location.state
     return(
-        <div>
-            <ul>
-                {items.map(el =>
-                    <li key={el.itemName}>{el.itemName}</li>
-                )}
-            </ul>
+        <div className='tagContainer'>
+            <div className='rowTags'>
+            {items.map(el =>
+                <PriceTag item={el}></PriceTag>
+            )}
+            </div>
+
+            
             <a href="javascript:(print());">Печать</a>
         </div>
     )

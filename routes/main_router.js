@@ -2,17 +2,7 @@ const {Router}= require('express')
 const router = Router()
 const config = require('config')
 const {sendQuery} = require('../db')
-// /auth/register
-// router.post('/register', async (req, res) =>{
-//     try{
-        
-
-
-
-//     }catch(e){
-//         res.status(500).json({message: 'Server error, try again later'})
-//     }
-// })
+const {formatDate, formatPrice} = require('../format_functions')
 
 // /find/mag
 router.post('/mag', async (req, res) =>{
@@ -40,7 +30,14 @@ router.post('/items', async (req, res) =>{
         }
         query = "SELECT * from marafettPrice where shopCode = \'" + mag_number + "\' and docNumber = \'" + doc_number + "\'"
         result = await sendQuery(query)
-
+        result.recordset.forEach(el=>{
+            if(el.docDate != null){
+                el.docDate = formatDate(el.docDate)
+            }
+            if(el.itemPrice != null){
+                el.itemPrice = formatPrice(el.itemPrice)
+            }
+        })
         res.status(200).json({result})
     }catch(e){
         res.status(500).json({message: 'Server error, try again later'})
