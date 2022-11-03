@@ -1,9 +1,21 @@
+/* print page */
 @media print {
-    .header-left-top, .a-right-bottom, .time-right-bottom {
+    
+    .header-left-top, .a-right-bottom, .time-right-bottom, a {
     display: none;
     }
+    .pagebreak {
+        /* page-break-before: always; */
+        margin-bottom: 180px;
+    }
+    .tagContainer{
+        margin-top: 20px;
+        margin-left: 20px;
+    }
+    
 }
 
+/* prevent default */
 body,
 h1,
 h2,
@@ -20,19 +32,82 @@ dl,
 dd {
   margin: 0;
 }
-
-
-.tagContainer{
-    width: 1000px;
-    margin: 50px;
+/* main page */
+.main{
+    width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
-.columgTags{
+.form{
+    padding: 20px;
+    margin-top: 100px;
+    /* margin-bottom: 100px; */
+    width: 800px;
+    height: 200px;
     display: flex;
     flex-direction: column;
-    
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(221, 0, 255, 0.3);
+    border-radius: 30px;
 }
 
+.list{
+    margin-top: 50px ;
+}
+
+.showButton{
+    text-decoration: none;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    width: 150px;
+    height: 20px;
+    text-align: center;
+    color: black;
+    background-color: rgba(221, 0, 255, 0.3);
+}
+
+.showButton:hover{
+    background-color: rgba(221, 0, 255, 0.5);
+}
+
+.searchButton{
+    text-decoration: none;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    text-align: center;
+    color: black;
+    background-color: rgba(221, 0, 255, 0.3);
+}
+
+.searchButton:hover{
+    background-color: rgba(221, 0, 255, 0.5);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* containers */
+.tagContainer{
+    width: 1000px;
+}
+.tagContainer a{
+    font-size: 30px;
+}
 .rowTags{
     display: flex;
     flex-direction: row;
@@ -40,11 +115,11 @@ dd {
 }
 
 
-
+/* pricetag */
 .priceTag{
     border: 1px solid black;
     width: 150px;
-    height: 150px;
+    height: 180px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -57,9 +132,14 @@ dd {
     justify-content: space-between;
 }
 
+/* fields */
+#percent{
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
 
+}
 #itemPrice{
-    font-size: 32px;
+    font-size: 30px;
     font-family: 'Times New Roman', Times, serif;
 }
 #itemName{
@@ -76,4 +156,13 @@ dd {
     font-size: 8px;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: normal;
+}
+#oldPrice{
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    text-decoration: line-through solid rgba(0, 0, 0, 0.75) 1px;
+}
+#oldPriceHeader{
+    font-size: 12px;
+    font-family: 'Times New Roman', Times, serif;
 }

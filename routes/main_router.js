@@ -2,7 +2,7 @@ const {Router}= require('express')
 const router = Router()
 const config = require('config')
 const {sendQuery} = require('../db')
-const {formatDate, formatPrice} = require('../format_functions')
+const {formatDate, formatPrice, percent} = require('../format_functions')
 
 // /find/mag
 router.post('/mag', async (req, res) =>{
@@ -31,12 +31,16 @@ router.post('/items', async (req, res) =>{
         query = "SELECT * from marafettPrice where shopCode = \'" + mag_number + "\' and docNumber = \'" + doc_number + "\'"
         result = await sendQuery(query)
         result.recordset.forEach(el=>{
+            el.oldPrice = 555.00
+            el.percent = percent(el.oldPrice, el.itemPrice)
+            
             if(el.docDate != null){
                 el.docDate = formatDate(el.docDate)
             }
             if(el.itemPrice != null){
                 el.itemPrice = formatPrice(el.itemPrice)
             }
+            el.oldPrice = formatPrice(555.00)
         })
         res.status(200).json({result})
     }catch(e){

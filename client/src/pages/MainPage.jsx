@@ -24,7 +24,6 @@ const MainPage = () => {
         })
         setMags([])
         setItems([])
-        console.log(form)
     }
 
 
@@ -51,15 +50,15 @@ const MainPage = () => {
 
 
     return (
-        <div>
-            <h1>Ценники</h1>
-            <form>
+        <div className='main'>
+            <div className='form'>
+                <h1>Ценники</h1>
                 <label htmlFor="mag_number">Номер магазина</label>
                 <input
                 type="text"
                 name='mag_number' 
                 onChange={changeMagHandler}
-                placeholder='Введите номер магазина'
+                style={{border: "1px solid transparent",borderRadius:"20px"}}
                 />
 
                 <label htmlFor="doc_number">Номер документа</label>
@@ -74,25 +73,29 @@ const MainPage = () => {
                         onChange={changeHandler}
                         placeholder='Введите номер документа'
                     /> */}
-       
-                <button onClick={formHandler} disabled={loading}>Найти</button>
-            </form>
-            <Link to='/print' state={items}>Очко</Link>
 
+                <button className='searchButton' onClick={formHandler} disabled={loading}>Найти</button>
 
-            {items.length > 0 ? 
-                <ul>
-                    {items.map(el =>
-                        <li key={el.itemName}>{el.itemName}</li>
-                    )}
-                </ul>
-            :
-                <ul>
-                    {mags.map(el =>
-                        <li key={el.docNumber}>{el.docNumber}</li>
-                    )}
-                </ul>  
-            }
+                <Link className='showButton' to='/print' state={items}>Показать ценники</Link>
+            </div>
+                    {items.length > 0 ? 
+                    <div className='list'>
+                        <ul>
+                            {items.map(el =>
+                                <li key={el.itemName}>{el.itemName}</li>
+                            )}
+                        </ul>
+                    </div>
+                    :
+                    <div className='list'>
+                        <ul>
+                            {mags.map(el =>
+                                <li key={el.docNumber}>{el.docNumber}</li>
+                            )}
+                        </ul>  
+                    </div>
+                    }
+            
         </div>
     )
 }

@@ -23,15 +23,14 @@ function formatPrice(wrongPrice) {
     strPrice = String(wrongPrice.toFixed(1))
     price = strPrice.replace('.', ',') + '0'
  
-    
     return price
 }
 
+function percent(oldPrice, price){
+    raw = 100 - (price * 100 / oldPrice)
+    floor = Math.floor(raw)
+    difference = String(floor)
+    return difference
+}
 
-
-
-
-
-
-
-module.exports = { formatDate, formatPrice };
+module.exports = { formatDate, formatPrice, percent };
