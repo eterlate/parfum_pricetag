@@ -15,13 +15,12 @@
     
 }
 
-body{
+/* body{
     background-image: url('back.jpg');
     background-size: 100%;
     background-attachment: fixed ;
 	background-position: center;
-
-}
+} */
 
 /* prevent default */
 body,
@@ -43,7 +42,7 @@ dd {
 /* main page */
 .main{
     width: 1300px;
-    margin: 10% auto;
+    margin: 0 auto;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -140,6 +139,7 @@ dd {
 
 /* pricetag */
 .priceTag{
+    background-color: white;
     border: 1px solid black;
     width: 150px;
     height: 180px;
@@ -156,6 +156,14 @@ dd {
 }
 
 /* fields */
+#itemName{
+    font-size: 12px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: normal;
+    height: 58px;
+    overflow: hidden;
+}
+
 #percent{
     font-size: 20px;
     font-family: Arial, Helvetica, sans-serif;
@@ -164,11 +172,12 @@ dd {
 #itemPrice{
     font-size: 30px;
     font-family: 'Times New Roman', Times, serif;
+    height: 60px;
 }
-#itemName{
-    font-size: 12px;
+#itemPrice1{
+    font-size: 30px;
     font-family: 'Times New Roman', Times, serif;
-    font-weight: normal;
+    height: 30px;
 }
 #docDate{
     font-size: 8px;

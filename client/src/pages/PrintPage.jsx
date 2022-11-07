@@ -1,14 +1,18 @@
 import React from 'react'
 import { useLocation } from 'react-router-dom'
 import PriceTag from './PriceTag'
+import { Link } from 'react-router-dom' 
 
 function PrintPage () {
     const location = useLocation()
     let i = 0
     const items = location.state
     return(
+
+
         <div className='tagContainer'>
-            <a href="javascript:(print());">Печать</a>
+            <a style={{margin:'0 250px', color:'black', textDecoration:'none'}} href="javascript:(print());">Печать</a>
+            <Link style={{color:'black', textDecoration:'none'}} to='/'>Назад</Link>
             <div className='rowTags'>
             {items.map(el => {
                 i+=1
