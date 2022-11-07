@@ -12,7 +12,7 @@ router.post('/mag', async (req, res) =>{
         if (!mag_number){
             return res.status(400).json({message: 'Empty number'})
         }
-        query = "SELECT distinct docNumber from marafettPrice where shopCode = \'" + mag_number + "\' order by docNumber"
+        query = "SELECT distinct docNumber from marafettPrice where shopCode = \'" + mag_number + "\' order by docNumber desc"
         result = await sendQuery(query)
 
         res.status(200).json({result})
@@ -31,8 +31,7 @@ router.post('/items', async (req, res) =>{
         query = "SELECT * from marafettPrice where shopCode = \'" + mag_number + "\' and docNumber = \'" + doc_number + "\'"
         result = await sendQuery(query)
         result.recordset.forEach(el=>{
-            el.oldPrice = 555.00
-            el.percent = percent(el.oldPrice, el.itemPrice)
+            el.percent = percent(el.itemPriceOld, el.itemPrice)
             
             if(el.docDate != null){
                 el.docDate = formatDate(el.docDate)
@@ -40,7 +39,9 @@ router.post('/items', async (req, res) =>{
             if(el.itemPrice != null){
                 el.itemPrice = formatPrice(el.itemPrice)
             }
-            el.oldPrice = formatPrice(555.00)
+            if(el.itemPriceOld != null){
+                el.itemPriceOld = formatPrice(el.itemPriceOld)
+            }
         })
         res.status(200).json({result})
     }catch(e){

@@ -15,6 +15,14 @@
     
 }
 
+body{
+    background-image: url('back.jpg');
+    background-size: 100%;
+    background-attachment: fixed ;
+	background-position: center;
+
+}
+
 /* prevent default */
 body,
 h1,
@@ -35,7 +43,7 @@ dd {
 /* main page */
 .main{
     width: 1300px;
-    margin: 0 auto;
+    margin: 10% auto;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -43,8 +51,9 @@ dd {
 }
 
 .form{
+    margin-top: 10%;
     padding: 20px;
-    margin-top: 100px;
+    /* margin-top: 100px; */
     /* margin-bottom: 100px; */
     width: 800px;
     height: 200px;
@@ -52,9 +61,22 @@ dd {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    background-image: linear-gradient(to right, rgba(221, 0, 255, 0.5), rgba(21, 0, 255, 0.7));
     background-color: rgba(221, 0, 255, 0.3);
     border-radius: 30px;
 }
+
+.form input, select{
+    width: 110px;
+    margin-right: 10px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+}
+
+.form input{
+    width: 104px;
+}
+
 
 .list{
     margin-top: 50px ;
@@ -68,11 +90,11 @@ dd {
     height: 20px;
     text-align: center;
     color: black;
-    background-color: rgba(221, 0, 255, 0.3);
+    background-color: white;
 }
 
 .showButton:hover{
-    background-color: rgba(221, 0, 255, 0.5);
+    background-color: rgba(221, 0, 255, 0.4);
 }
 
 .searchButton{
@@ -81,11 +103,12 @@ dd {
     border-radius: 20px;
     text-align: center;
     color: black;
-    background-color: rgba(221, 0, 255, 0.3);
+    background-color: white;
+    width: 130px;
 }
 
 .searchButton:hover{
-    background-color: rgba(221, 0, 255, 0.5);
+    background-color: rgba(221, 0, 255, 0.4);
 }
 
 

@@ -1,7 +1,6 @@
 function formatDate(Sdate) {
     var date = new Date(Sdate)
 
-
     Day = date.getDate()
     Month = date.getMonth() + 1
     Year = date.getYear() + 1900
@@ -22,11 +21,13 @@ function formatDate(Sdate) {
 function formatPrice(wrongPrice) {
     strPrice = String(wrongPrice.toFixed(1))
     price = strPrice.replace('.', ',') + '0'
- 
     return price
 }
 
 function percent(oldPrice, price){
+    if (oldPrice <= price) {
+        return null
+    }
     raw = 100 - (price * 100 / oldPrice)
     floor = Math.floor(raw)
     difference = String(floor)
