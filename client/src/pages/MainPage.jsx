@@ -44,14 +44,15 @@ const MainPage = () => {
     }
 
     // query
-    const docHandler = async () => {
+    const docHandler = async (e) => {
         try {
+            e.preventDefault()
             const data = await request('/find/mag', 'POST', { ...form })
             setMags(data.result.recordset)
             setCookie('searchData', form, { path: '/' })
         } catch (e) { }
     }
-    const positionsHandler = async (e) => {
+    const positionsHandler = async () => {
         try {
             const data = await request('/find/items', 'POST', { ...form })
             setItems(data.result.recordset)
@@ -61,20 +62,23 @@ const MainPage = () => {
 
     return (
         <div className='main'>
+            
             <div className='form'>
+                <form onSubmit={docHandler}>
                 <h1>Ценники</h1>
                 <label htmlFor="mag_number">Номер магазина</label>
                 <div>
-                    <form id='chel'>
+                    
                         <input
                             type="text"
                             name='mag_number'
                             onChange={changeMagHandler}
                             value={form.mag_number}
                         />
-                        <button className='searchButton' onClick={docHandler} disabled={loading}>Найти документы</button>
-                    </form>
+                        <button className='searchButton' type='submit' disabled={loading}>Найти документы</button>
+                    
                 </div>
+                </form>
                 <label htmlFor="doc_number">Номер документа</label>
                 <div>
                     <select value={form.doc_number} onChange={changeHandler} name="doc_number" id="doc_number">
@@ -88,7 +92,7 @@ const MainPage = () => {
 
                 <Link className='showButton' to='/print' state={items}>Показать ценники</Link>
                 <button className='showButton' onClick={clearHandler}>Очистить поля</button>
-
+                
             </div>
             {items.length > 0 ?
                 <div className='list'>
