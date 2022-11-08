@@ -7,11 +7,15 @@ function PriceTag(props) {
                 <div className='priceTag'>
                     <h1 id='itemName'>{props.item.itemName}</h1>
                     <div>
-                        <h1 id='percent'>Скидка: {props.item.percent}%</h1>
+                        {props.item.percent < 10 ?
+                            <h1 id='percent'></h1>
+                            :
+                            <h1 id='percent'>скидка {props.item.percent}%</h1>
+                        }
                         <h1 id='itemPrice1'>{props.item.itemPrice}</h1>
                     </div>
                     <div>
-                        <h1 id='oldPriceHeader'>Старая цена</h1>
+                        <h1 id='oldPriceHeader'>старая цена</h1>
                         <h1 id='oldPrice'>{props.item.itemPriceOld}</h1>
                     </div>
                     <div className='priceTagBottom'>
