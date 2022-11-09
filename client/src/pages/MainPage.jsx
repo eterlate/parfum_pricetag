@@ -12,6 +12,10 @@ const MainPage = () => {
         mag_number: '',
         doc_number: ''
     })
+    const [headers, setHeaders] = useState({
+        header: '',
+        color: ''
+    })
     const [mags, setMags] = useState([])
     const [items, setItems] = useState([])
     useEffect(() => {
@@ -29,6 +33,12 @@ const MainPage = () => {
             mag_number: '',
             doc_number: ''
         })
+        setHeaders({
+            header: '',
+            color:''
+        })
+        setMags([])
+        setItems([])
         removeCookie('searchData')
     }
     const changeHandler = event => {
@@ -55,6 +65,17 @@ const MainPage = () => {
     const positionsHandler = async () => {
         try {
             const data = await request('/find/items', 'POST', { ...form })
+            if(data.headers != undefined){
+                setHeaders({
+                    header: data.headers.header,
+                    color: data.headers.color
+                })
+            }else{
+                setHeaders({
+                    header: '',
+                    color: ''
+                })
+            }
             setItems(data.result.recordset)
             setCookie('searchData', form, { path: '/' })
         } catch (e) { }
@@ -68,7 +89,6 @@ const MainPage = () => {
                 <h1>Ценники</h1>
                 <label htmlFor="mag_number">Номер магазина</label>
                 <div>
-                    
                         <input
                             type="text"
                             name='mag_number'
@@ -76,7 +96,6 @@ const MainPage = () => {
                             value={form.mag_number}
                         />
                         <button className='searchButton' type='submit' disabled={loading}>Найти документы</button>
-                    
                 </div>
                 </form>
                 <label htmlFor="doc_number">Номер документа</label>
@@ -94,6 +113,15 @@ const MainPage = () => {
                 <button className='showButton' onClick={clearHandler}>Очистить поля</button>
                 
             </div>
+            {headers.header != ''
+            ?
+            <div className='headerBack'><h1 style={headers}>{headers.header}</h1></div>
+            :
+            <div></div>
+            }
+            
+                
+            
             {items.length > 0 ?
                 <div className='list'>
                     <ul>
@@ -104,6 +132,7 @@ const MainPage = () => {
                 </div>
                 :
                 <div className='list'>
+                    
                     <ul>
                         {mags.map(el =>
                             <li key={el.docNumber}>{el.docNumber}</li>

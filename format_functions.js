@@ -24,7 +24,7 @@ function formatPrice(wrongPrice) {
     return price
 }
 
-function percent(oldPrice, price){
+function percent(oldPrice, price) {
     if (oldPrice <= price) {
         return null
     }
@@ -34,4 +34,45 @@ function percent(oldPrice, price){
     return difference
 }
 
-module.exports = { formatDate, formatPrice, percent };
+function headerCheck(docNumber) {
+    lastTwo = docNumber.substring(docNumber.length - 2)
+    itog = {
+        header: '',
+        color: ''
+    }
+    switch (lastTwo) {
+        case '01':
+            itog.header = 'Повышение цен, Оранжевый ценник'
+            itog.color = 'orange'
+            break
+        case '02':
+            itog.header = 'Повышение цен, Белый ценник'
+            itog.color = 'white'
+            break
+        case '03':
+            itog.header = 'Понижение цен, Оранжевый ценник'
+            itog.color = 'orange'
+            break
+        case '04':
+            itog.header = 'Понижение цен, Белый ценник'
+            itog.color = 'white'
+            break
+        case '05':
+            itog.header = 'Цена не изменилась, Оранжевый ценник'
+            itog.color = 'orange'
+            break
+        case '06':
+            itog.header = 'Цена не изменилась, Белый ценник'
+            itog.color = 'white'
+            break
+        case '99':
+            itog.header = 'Нет изменений в цвете ценника и цены номенклатуры в документе'
+            itog.color = 'white'
+            break
+        default:
+            return undefined
+    }
+    return itog
+}
+
+module.exports = { formatDate, formatPrice, percent, headerCheck };

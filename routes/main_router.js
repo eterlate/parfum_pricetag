@@ -2,7 +2,7 @@ const {Router}= require('express')
 const router = Router()
 const config = require('config')
 const {sendQuery} = require('../db')
-const {formatDate, formatPrice, percent} = require('../format_functions')
+const {formatDate, formatPrice, percent, headerCheck} = require('../format_functions')
 
 // /find/mag
 router.post('/mag', async (req, res) =>{
@@ -25,6 +25,7 @@ router.post('/mag', async (req, res) =>{
 router.post('/items', async (req, res) =>{
     try{
         const {mag_number, doc_number} = req.body
+        headers = headerCheck(doc_number)
         if (!mag_number && !doc_number){
             return res.status(400).json({message: 'Empty fields'})
         }
@@ -43,7 +44,7 @@ router.post('/items', async (req, res) =>{
                 el.itemPriceOld = formatPrice(el.itemPriceOld)
             }
         })
-        res.status(200).json({result})
+        res.status(200).json({result, headers})
     }catch(e){
         res.status(500).json({message: 'Server error, try again later'})
     }
