@@ -8,6 +8,7 @@ const MainPage = () => {
     const { loading, error, request } = useHttp()
 
     const [cookies, setCookie, removeCookie] = useCookies(['searchData']);
+
     const [form, setForm] = useState({
         mag_number: '',
         doc_number: ''
@@ -18,15 +19,24 @@ const MainPage = () => {
     })
     const [mags, setMags] = useState([])
     const [items, setItems] = useState([])
+
     useEffect(() => {
         if ('searchData' in cookies) {
             setForm({
                 mag_number: cookies.searchData.mag_number,
-                doc_number: cookies.searchData.doc_number
+                doc_number: ''
             })
+            const refreshHandler = async () => {
+                try {
+                    const data = await request('/find/mag', 'POST', { mag_number: cookies.searchData.mag_number})
+                    setMags(data.result.recordset)
+                } catch (e) { }
+            }
+            refreshHandler()
         }
-    }, []);
-
+        
+    },[]);
+    
     //handlers
     const clearHandler = () => {
         setForm({
