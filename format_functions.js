@@ -70,7 +70,9 @@ function headerCheck(docNumber) {
             itog.color = 'white'
             break
         default:
-            return undefined
+            itog.header = ''
+            itog.color = ''
+            return itog
     }
     return itog
 }

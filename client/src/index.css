@@ -15,12 +15,9 @@
     
 }
 
-/* body{
-    background-image: url('back.jpg');
-    background-size: 100%;
-    background-attachment: fixed ;
-	background-position: center;
-} */
+body{
+   background-color: rgba(221, 0, 255, 0.25);
+}
 
 /* prevent default */
 body,
@@ -52,10 +49,8 @@ dd {
 .form{
     margin-top: 10%;
     padding: 20px;
-    /* margin-top: 100px; */
-    /* margin-bottom: 100px; */
     width: 800px;
-    height: 200px;
+    height: 220px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -76,22 +71,35 @@ dd {
     width: 104px;
 }
 
+.headerBack{
+    padding: 10px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+    background-color: black;
+
+    height: 50px;
+    border: 1px solid transparent;
+    border-radius: 20px;
+}
 
 .list{
     margin-top: 50px ;
 }
 
 .showButton{
+    font-family: Arial;
+    font-size: 14px;
     text-decoration: none;
     border: 1px solid transparent;
     border-radius: 20px;
-    width: 150px;
+    width: 220px;
     height: 20px;
     text-align: center;
     color: black;
     background-color: white;
 }
-
 .showButton:hover{
     background-color: rgba(221, 0, 255, 0.4);
 }
@@ -105,23 +113,9 @@ dd {
     background-color: white;
     width: 130px;
 }
-
 .searchButton:hover{
     background-color: rgba(221, 0, 255, 0.4);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* containers */
 .tagContainer{
@@ -137,7 +131,7 @@ dd {
 }
 
 
-/* pricetag */
+/* --------------------------------------------------------------------------------small pricetag */
 .priceTag{
     background-color: white;
     border: 1px solid black;
@@ -149,21 +143,18 @@ dd {
     text-align: center;
     flex-wrap: nowrap;
 }
-
 .priceTagBottom{
     display: flex;
     justify-content: space-between;
 }
-
 /* fields */
 #itemName{
-    font-size: 12px;
+    font-size: 10px;
     font-family: 'Times New Roman', Times, serif;
     font-weight: normal;
-    height: 58px;
+    height: 44px;
     overflow: hidden;
 }
-
 #percent{
     font-size: 20px;
     font-family: Arial, Helvetica, sans-serif;
@@ -174,9 +165,9 @@ dd {
     height: 60px;
 }
 #itemPrice1{
-    font-size: 30px;
+    font-size: 34px;
     font-family: 'Times New Roman', Times, serif;
-    height: 30px;
+    height: 40px;
 }
 #docDate{
     font-size: 8px;
@@ -189,24 +180,83 @@ dd {
     font-weight: normal;
 }
 #oldPrice{
-    font-size: 20px;
+    font-size: 26px;
     font-family: 'Times New Roman', Times, serif;
     text-decoration: line-through solid rgba(0, 0, 0, 0.75) 1px;
+    height: 39px;
 }
 #oldPriceHeader{
-    font-size: 12px;
+    font-size: 14px;
     font-family: 'Times New Roman', Times, serif;
 }
 
-.headerBack{
-    padding: 10px;
-    justify-content: center;
+/* --------------------------------------------------------------------------------big pricetag */
+.priceTagBig{
+    background-color: white;
+    border: 1px solid black;
+    width: 400px;
+    height: 180px;
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    margin-top: 30px;
-    background-color: black;
+    text-align: center;
+    flex-wrap: nowrap;
+}
+.priceTagBottomBig{
+    display: flex;
+    flex-direction: row;
+    width: 200px;
+    margin-left: 50%;
+    justify-content: space-between;
+}
 
-    height: 50px;
-    border: 1px solid transparent;
-    border-radius: 20px;
+/* fields */
+#itemNameBig{
+    font-size: 15px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: normal;
+    width: 180px;
+    height: 65px;
+    overflow: hidden;
+}
+#percentBig{
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+#itemPriceBig{
+    /* width: 200px; */
+    font-size: 55px;
+    font-family: 'Times New Roman', Times, serif;
+}
+#itemPrice1Big{
+    font-size: 34px;
+    font-family: 'Times New Roman', Times, serif;
+    height: 40px;
+}
+#docDateBig{
+    font-size: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+}
+#itemCodeBig{
+    font-size: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+}
+#oldPriceBig{
+    font-size: 26px;
+    font-family: 'Times New Roman', Times, serif;
+    text-decoration: line-through solid rgba(0, 0, 0, 0.75) 1px;
+    height: 39px;
+}
+#oldPriceHeaderBig{
+    font-size: 14px;
+}
+.top{
+    justify-content: space-between;
+    margin-top: 55px;
+    display: flex;
+    flex-direction: row;
+    width: 400px;
 }

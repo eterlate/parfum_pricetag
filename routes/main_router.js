@@ -14,6 +14,12 @@ router.post('/mag', async (req, res) =>{
         }
         query = "SELECT distinct docNumber from marafettPrice where shopCode = \'" + mag_number + "\' order by docNumber desc"
         result = await sendQuery(query)
+        result.recordset.forEach(el=>{
+            if(headerCheck(el.docNumber) != undefined){
+                el.headers = headerCheck(el.docNumber)
+            }
+            
+        })
 
         res.status(200).json({result})
     }catch(e){

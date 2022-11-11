@@ -28,15 +28,15 @@ const MainPage = () => {
             })
             const refreshHandler = async () => {
                 try {
-                    const data = await request('/find/mag', 'POST', { mag_number: cookies.searchData.mag_number})
+                    const data = await request('/find/mag', 'POST', { mag_number: cookies.searchData.mag_number })
                     setMags(data.result.recordset)
                 } catch (e) { }
             }
             refreshHandler()
         }
-        
-    },[]);
-    
+
+    }, []);
+
     //handlers
     const clearHandler = () => {
         setForm({
@@ -45,7 +45,7 @@ const MainPage = () => {
         })
         setHeaders({
             header: '',
-            color:''
+            color: ''
         })
         setMags([])
         setItems([])
@@ -75,12 +75,12 @@ const MainPage = () => {
     const positionsHandler = async () => {
         try {
             const data = await request('/find/items', 'POST', { ...form })
-            if(data.headers != undefined){
+            if (data.headers != undefined) {
                 setHeaders({
                     header: data.headers.header,
                     color: data.headers.color
                 })
-            }else{
+            } else {
                 setHeaders({
                     header: '',
                     color: ''
@@ -93,21 +93,19 @@ const MainPage = () => {
 
     return (
         <div className='main'>
-            
-            <div className='form'>
-                <form onSubmit={docHandler}>
+            <form className='form' onSubmit={docHandler}>
                 <h1>Ценники</h1>
                 <label htmlFor="mag_number">Номер магазина</label>
                 <div>
-                        <input
-                            type="text"
-                            name='mag_number'
-                            onChange={changeMagHandler}
-                            value={form.mag_number}
-                        />
-                        <button className='searchButton' type='submit' disabled={loading}>Найти документы</button>
+                    <input
+                        type="text"
+                        name='mag_number'
+                        onChange={changeMagHandler}
+                        value={form.mag_number}
+                    />
+                    <button className='searchButton' type='submit' disabled={loading}>Найти документы</button>
                 </div>
-                </form>
+
                 <label htmlFor="doc_number">Номер документа</label>
                 <div>
                     <select value={form.doc_number} onChange={changeHandler} name="doc_number" id="doc_number">
@@ -119,19 +117,18 @@ const MainPage = () => {
                     <button className='searchButton' onClick={positionsHandler} disabled={loading}>Найти позиции</button>
                 </div>
 
-                <Link className='showButton' to='/print' state={items}>Показать ценники</Link>
-                <button className='showButton' onClick={clearHandler}>Очистить поля</button>
-                
-            </div>
+                <Link className='showButton' to='/print' state={items}>Показать маленькие ценники</Link>
+                <Link className='showButton' to='/print_big' state={items}>Показать большие ценники</Link>
+                <button className='searchButton' onClick={clearHandler}>Очистить поля</button>
+            </form>
+
+
             {headers.header != ''
-            ?
-            <div className='headerBack'><h1 style={headers}>{headers.header}</h1></div>
-            :
-            <div></div>
+                ?
+                <div className='headerBack'><h1 style={headers}>{headers.header}</h1></div>
+                :
+                <div></div>
             }
-            
-                
-            
             {items.length > 0 ?
                 <div className='list'>
                     <ul>
@@ -142,10 +139,13 @@ const MainPage = () => {
                 </div>
                 :
                 <div className='list'>
-                    
                     <ul>
-                        {mags.map(el =>
-                            <li key={el.docNumber}>{el.docNumber}</li>
+                        {mags.map(el => {
+                            return el.headers.header == '' ?
+                                <li key={el.docNumber}>{el.docNumber}</li>
+                                :
+                                <li key={el.docNumber}>{el.docNumber} --- {el.headers.header}</li>
+                        }
                         )}
                     </ul>
                 </div>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useLocation } from 'react-router-dom'
-import PriceTag from './PriceTag'
+import PriceTag from '../components/PriceTag'
 import { Link } from 'react-router-dom' 
 
 function PrintPage () {
