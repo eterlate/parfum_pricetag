@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useHttp } from '../hooks/http.hook'
 import { useCookies } from 'react-cookie';
+import ItemStr from '../components/ItemStr';
+
 
 
 const MainPage = () => {
@@ -19,6 +21,8 @@ const MainPage = () => {
     })
     const [mags, setMags] = useState([])
     const [items, setItems] = useState([])
+
+
 
     useEffect(() => {
         if ('searchData' in cookies) {
@@ -86,12 +90,34 @@ const MainPage = () => {
                     color: ''
                 })
             }
-            setItems(data.result.recordset)
+            setItems(data.result.recordset.map(el => { return { ...el, count: 1 } }
+            ))
+
             setCookie('searchData', form, { path: '/' })
         } catch (e) { }
     }
 
+    const increment = (itemCode, count) => {
+        setItems(prev => {
+            let newData = [...prev]
+            const index = newData.findIndex(el => el.itemCode === itemCode)
+            if (count < 0){
+                return prev
+            }
+            newData[index].count = count
+            return newData
+        })
+    }
+    // const decrement = (itemCode) => {
+    //     setItems(prev => {
+    //         const index = prev.findIndex(el => el.itemCode === itemCode)
+    //         prev[index].count = prev[index].count - 0.5
+    //         return [...prev]
+    //     })
+    // }
+
     return (
+
         <div className='main'>
             <form className='form' onSubmit={docHandler}>
                 <h1>Ценники</h1>
@@ -130,13 +156,18 @@ const MainPage = () => {
                 <div></div>
             }
             {items.length > 0 ?
-                <div className='list'>
-                    <ul>
+                <table id='items'>
+                    <tbody>
+                        <tr>
+                            <th>Штрих-код</th>
+                            <th>Название</th>
+                            <th>Количество</th>
+                        </tr>
                         {items.map(el =>
-                            <li key={el.itemName}>{el.itemName}</li>
+                            <ItemStr key={el.itemCode} item={el} increment={increment}></ItemStr>
                         )}
-                    </ul>
-                </div>
+                    </tbody>
+                </table>
                 :
                 <div className='list'>
                     <ul>
@@ -150,6 +181,7 @@ const MainPage = () => {
                     </ul>
                 </div>
             }
+
         </div>
     )
 }

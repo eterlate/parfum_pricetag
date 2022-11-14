@@ -1,22 +1,29 @@
 /* print page */
 @media print {
-    
-    .header-left-top, .a-right-bottom, .time-right-bottom, a {
-    display: none;
+
+    .header-left-top,
+    .a-right-bottom,
+    .time-right-bottom,
+    a {
+        display: none;
     }
+
     .pagebreak {
-        /* page-break-before: always; */
-        margin-bottom: 180px;
+        page-break-before: always;
+        width: 1300px;
+        height: 180px;
     }
-    .tagContainer{
+
+    .tagContainer {
         margin-top: 20px;
         margin-left: 20px;
     }
-    
 }
 
-body{
-   background-color: rgba(221, 0, 255, 0.25);
+
+
+body {
+    background-color: rgba(221, 0, 255, 0.1);
 }
 
 /* prevent default */
@@ -34,10 +41,11 @@ figcaption,
 blockquote,
 dl,
 dd {
-  margin: 0;
+    margin: 0;
 }
+
 /* main page */
-.main{
+.main {
     width: 1300px;
     margin: 0 auto;
     display: flex;
@@ -46,8 +54,8 @@ dd {
     align-items: center;
 }
 
-.form{
-    margin-top: 10%;
+.form {
+    margin-top: 5%;
     padding: 20px;
     width: 800px;
     height: 220px;
@@ -60,18 +68,19 @@ dd {
     border-radius: 30px;
 }
 
-.form input, select{
+.form input,
+select {
     width: 110px;
     margin-right: 10px;
     border: 1px solid transparent;
     border-radius: 10px;
 }
 
-.form input{
+.form input {
     width: 104px;
 }
 
-.headerBack{
+.headerBack {
     padding: 10px;
     justify-content: center;
     display: flex;
@@ -84,11 +93,11 @@ dd {
     border-radius: 20px;
 }
 
-.list{
-    margin-top: 50px ;
+.list {
+    margin-top: 50px;
 }
 
-.showButton{
+.showButton {
     font-family: Arial;
     font-size: 14px;
     text-decoration: none;
@@ -100,11 +109,12 @@ dd {
     color: black;
     background-color: white;
 }
-.showButton:hover{
+
+.showButton:hover {
     background-color: rgba(221, 0, 255, 0.4);
 }
 
-.searchButton{
+.searchButton {
     text-decoration: none;
     border: 1px solid transparent;
     border-radius: 20px;
@@ -113,26 +123,30 @@ dd {
     background-color: white;
     width: 130px;
 }
-.searchButton:hover{
+
+.searchButton:hover {
     background-color: rgba(221, 0, 255, 0.4);
 }
 
 /* containers */
-.tagContainer{
+.tagContainer {
     width: 1000px;
 }
-.tagContainer a{
+
+.tagContainer a {
     font-size: 30px;
 }
-.rowTags{
+
+.rowTags {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    float:none;
 }
 
 
 /* --------------------------------------------------------------------------------small pricetag */
-.priceTag{
+.priceTag {
     background-color: white;
     border: 1px solid black;
     width: 150px;
@@ -143,55 +157,64 @@ dd {
     text-align: center;
     flex-wrap: nowrap;
 }
-.priceTagBottom{
+
+.priceTagBottom {
     display: flex;
     justify-content: space-between;
 }
+
 /* fields */
-#itemName{
+#itemName {
     font-size: 10px;
     font-family: 'Times New Roman', Times, serif;
     font-weight: normal;
     height: 44px;
     overflow: hidden;
 }
-#percent{
+
+#percent {
     font-size: 20px;
     font-family: Arial, Helvetica, sans-serif;
 }
-#itemPrice{
+
+#itemPrice {
     font-size: 30px;
     font-family: 'Times New Roman', Times, serif;
     height: 60px;
 }
-#itemPrice1{
+
+#itemPrice1 {
     font-size: 34px;
     font-family: 'Times New Roman', Times, serif;
     height: 40px;
 }
-#docDate{
+
+#docDate {
     font-size: 8px;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: normal;
 }
-#itemCode{
+
+#itemCode {
     font-size: 8px;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: normal;
 }
-#oldPrice{
+
+#oldPrice {
     font-size: 26px;
     font-family: 'Times New Roman', Times, serif;
     text-decoration: line-through solid rgba(0, 0, 0, 0.75) 1px;
     height: 39px;
 }
-#oldPriceHeader{
+
+#oldPriceHeader {
     font-size: 14px;
     font-family: 'Times New Roman', Times, serif;
 }
 
 /* --------------------------------------------------------------------------------big pricetag */
-.priceTagBig{
+.priceTagBig {
     background-color: white;
     border: 1px solid black;
     width: 400px;
@@ -203,7 +226,8 @@ dd {
     text-align: center;
     flex-wrap: nowrap;
 }
-.priceTagBottomBig{
+
+.priceTagBottomBig {
     display: flex;
     flex-direction: row;
     width: 200px;
@@ -212,7 +236,7 @@ dd {
 }
 
 /* fields */
-#itemNameBig{
+#itemNameBig {
     font-size: 15px;
     font-family: 'Times New Roman', Times, serif;
     font-weight: normal;
@@ -220,43 +244,98 @@ dd {
     height: 65px;
     overflow: hidden;
 }
-#percentBig{
+
+#percentBig {
     font-size: 20px;
     font-family: Arial, Helvetica, sans-serif;
 }
-#itemPriceBig{
+
+#itemPriceBig {
     /* width: 200px; */
     font-size: 55px;
     font-family: 'Times New Roman', Times, serif;
 }
-#itemPrice1Big{
+
+#itemPrice1Big {
     font-size: 34px;
     font-family: 'Times New Roman', Times, serif;
     height: 40px;
 }
-#docDateBig{
+
+#docDateBig {
     font-size: 10px;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: normal;
 }
-#itemCodeBig{
+
+#itemCodeBig {
     font-size: 10px;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: normal;
 }
-#oldPriceBig{
+
+#oldPriceBig {
     font-size: 26px;
     font-family: 'Times New Roman', Times, serif;
     text-decoration: line-through solid rgba(0, 0, 0, 0.75) 1px;
     height: 39px;
 }
-#oldPriceHeaderBig{
+
+#oldPriceHeaderBig {
     font-size: 14px;
 }
-.top{
+
+.top {
     justify-content: space-between;
     margin-top: 55px;
     display: flex;
     flex-direction: row;
     width: 400px;
+}
+
+
+
+#items {
+    margin: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#items td,
+#items th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+#items tr{
+    background-color: white;
+    text-align: center;
+}
+#items tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#items tr:hover {
+    background-color: #ddd;
+}
+
+#items th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-image: linear-gradient(to right, rgba(221, 0, 255, 0.5), rgba(21, 0, 255, 0.7));
+    color: white;
+}
+#items th:last-child {
+    background-image: linear-gradient(to left, rgba(221, 0, 255, 0.5), rgba(21, 0, 255, 0.7));
+}
+#items th:first-child {
+    background-image: linear-gradient(to left, rgba(221, 0, 255, 0.5), rgba(21, 0, 255, 0.7));
+}
+
+.plusminusButton{
+    margin: 0 5px;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.1);
 }

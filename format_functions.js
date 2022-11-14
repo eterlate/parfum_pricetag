@@ -67,7 +67,7 @@ function headerCheck(docNumber) {
             break
         case '99':
             itog.header = 'Нет изменений в цвете ценника и цены номенклатуры в документе'
-            itog.color = 'white'
+            itog.color = 'gray'
             break
         default:
             itog.header = ''
