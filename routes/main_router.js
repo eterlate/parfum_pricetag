@@ -37,7 +37,6 @@ router.post('/items', async (req, res) =>{
             return res.status(400).json({message: 'Empty fields'})
         }
         query = "select distinct itemCode, itemPrice, ПодКатегория, itemName, itemPriceOld from _vwMarafettPricePrint where shopCode like '"+mag_number+"' and docNumber like '%"+doc_number+"' order by ПодКатегория, itemName"
-        console.log(query)
         // query = "SELECT * from marafettPrice where shopCode = \'" + mag_number + "\' and docNumber = \'" + doc_number + "\'"
         result = await sendQuery(query)
         docDate = new Date
