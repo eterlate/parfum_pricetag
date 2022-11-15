@@ -156,12 +156,14 @@ const MainPage = () => {
                             name='mag_number'
                             onChange={changeMagHandler}
                             value={form.mag_number}
+                            style={{ marginRight: '10px' }}
                         />
                         <button className='searchButton' type='submit' disabled={loading}>Найти документы</button>
                     </div>
-
-                    <Link className='showButton' to='/print' state={items}>Показать маленькие ценники</Link>
-                    <Link className='showButton' to='/print_big' state={items}>Показать большие ценники</Link>
+                    <div style={{ display: 'flex', flexDirection: 'row' }}>
+                        <Link style={{ marginRight: '10px' }} className='showButton' to='/print' state={items}>Маленькие ценники</Link>
+                        <Link className='showButton' to='/print_big' state={items}>Большие ценники</Link>
+                    </div>
                     <button className='searchButton' onClick={clearHandler}>Очистить поля</button>
                 </form>
 

@@ -73,7 +73,6 @@ dd {
 .form input,
 select {
     width: 110px;
-    margin-right: 10px;
     border: 1px solid transparent;
     border-radius: 10px;
 }
@@ -99,19 +98,22 @@ select {
 }
 
 .showButton {
+    display: block;
     font-size: 14px;
     text-decoration: none;
     border: 1px solid transparent;
     border-radius: 20px;
-    width: 220px;
+    width: 150px;
     height: 20px;
     text-align: center;
     color: black;
     background-color: white;
 }
 
+
 .showButton:hover {
     background-color: rgba(221, 0, 255, 0.4);
+    transition: 0.3s;
 }
 
 .searchButton {
@@ -125,6 +127,7 @@ select {
 }
 
 .searchButton:hover {
+    transition: 0.3s;
     background-color: rgba(221, 0, 255, 0.4);
 }
 
@@ -316,7 +319,9 @@ select {
 
 #items tr:hover {
     background-color: #ddd;
+    transition: 0.3s;
 }
+
 
 #items th {
     padding-top: 12px;
