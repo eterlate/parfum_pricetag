@@ -32,7 +32,7 @@ router.post('/items', async (req, res) =>{
     try{
         const {mag_number, doc_number} = req.body
         headers = headerCheck(doc_number)
-        if (!mag_number && !doc_number){
+        if (!mag_number || !doc_number){
             return res.status(400).json({message: 'Empty fields'})
         }
         query = "SELECT * from marafettPrice where shopCode = \'" + mag_number + "\' and docNumber = \'" + doc_number + "\'"

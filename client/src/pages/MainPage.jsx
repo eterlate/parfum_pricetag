@@ -42,6 +42,10 @@ const MainPage = () => {
 
     }, []);
 
+    useEffect(() => {
+        positionsHandler()
+    }, [form])
+
     //handlers
     const clearHandler = () => {
         setForm({
@@ -56,9 +60,9 @@ const MainPage = () => {
         setItems([])
         removeCookie('searchData')
     }
-    const changeHandler = event => {
-        setForm({ ...form, [event.target.name]: event.target.value })
-    }
+    // const changeHandler = event => {
+    //     setForm({ ...form, [event.target.name]: event.target.value })
+    // }
     const changeMagHandler = event => {
         setForm({
             mag_number: event.target.value,
@@ -71,7 +75,11 @@ const MainPage = () => {
     // query
     const docHandler = async (e) => {
         try {
+            setItems([])
             e.preventDefault()
+            if(form.mag_number == ''){
+                return
+            }
             const data = await request('/find/mag', 'POST', { ...form })
             setMags(data.result.recordset)
             setCookie('searchData', form, { path: '/' })
@@ -79,6 +87,9 @@ const MainPage = () => {
     }
     const positionsHandler = async () => {
         try {
+            if (form.doc_number == '' || form.mag_number == '') {
+                return
+            }
             const data = await request('/find/items', 'POST', { ...form })
             if (data.headers != undefined) {
                 setHeaders({
@@ -110,6 +121,13 @@ const MainPage = () => {
         })
     }
 
+    const showItems = (doc_number, mag_number) => {
+        setForm({
+            mag_number,
+            doc_number
+        })
+    }
+
 
     return (
 
@@ -127,7 +145,7 @@ const MainPage = () => {
                     <button className='searchButton' type='submit' disabled={loading}>Найти документы</button>
                 </div>
 
-                <label htmlFor="doc_number">Номер документа</label>
+                {/* <label htmlFor="doc_number">Номер документа</label>
                 <div>
                     <select value={form.doc_number} onChange={changeHandler} name="doc_number" id="doc_number">
                         <option value={form.doc_number}>{form.doc_number}</option>
@@ -136,7 +154,7 @@ const MainPage = () => {
                         )}
                     </select>
                     <button className='searchButton' onClick={positionsHandler} disabled={loading}>Найти позиции</button>
-                </div>
+                </div> */}
 
                 <Link className='showButton' to='/print' state={items}>Показать маленькие ценники</Link>
                 <Link className='showButton' to='/print_big' state={items}>Показать большие ценники</Link>
@@ -165,21 +183,21 @@ const MainPage = () => {
                 </table>
                 :
                 mags.length > 0 ?
-                <table id='items'>
-                    <tbody>
-                        <tr>
-                            <th>Документ</th>
-                            <th>Ценник</th>
-                        </tr>
-                        {mags.map(el =>
+                    <table id='items'>
+                        <tbody>
+                            <tr>
+                                <th>Документ</th>
+                                <th>Ценник</th>
+                            </tr>
+                            {mags.map(el =>
 
-                            <MagStr key={el.shopCode + el.docNumber} mag={el}></MagStr>
+                                <MagStr key={el.shopCode + el.docNumber} mag={el} showItems={showItems}></MagStr>
 
-                        )}
-                    </tbody>
-                </table>
-                :
-                <div></div>
+                            )}
+                        </tbody>
+                    </table>
+                    :
+                    <div></div>
             }
 
         </div>
