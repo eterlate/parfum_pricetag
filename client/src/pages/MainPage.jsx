@@ -173,19 +173,22 @@ const MainPage = () => {
                     <div></div>
                 }
                 {items.length > 0 ?
-                    <table id='items'>
-                        <tbody>
-                            <tr>
-                                <th>Подкатегория</th>
-                                <th>Штрих-код</th>
-                                <th>Название</th>
-                                <th>Количество</th>
-                            </tr>
-                            {items.map(el =>
-                                <ItemStr key={el.itemCode} item={el} increment={increment}></ItemStr>
-                            )}
-                        </tbody>
-                    </table>
+                    <>
+                        <h2>Выбранный документ - {form.doc_number}</h2>
+                        <table id='items'>
+                            <tbody>
+                                <tr>
+                                    <th>Подкатегория</th>
+                                    <th>Штрих-код</th>
+                                    <th>Название</th>
+                                    <th>Количество</th>
+                                </tr>
+                                {items.map(el =>
+                                    <ItemStr key={el.itemCode} item={el} increment={increment}></ItemStr>
+                                )}
+                            </tbody>
+                        </table>
+                    </>
                     :
                     mags.length > 0 ?
                         <table id='items'>

@@ -83,11 +83,10 @@ select {
 }
 
 .headerBack {
-    padding: 10px;
     justify-content: center;
     display: flex;
     align-items: center;
-    margin-top: 30px;
+    margin-top: 10px;
     /* background-color: white; */
 
     height: 50px;
