@@ -12,7 +12,7 @@ router.post('/mag', async (req, res) =>{
         if (!mag_number){
             return res.status(400).json({message: 'Empty number'})
         }
-        query = "SELECT distinct docNumber from marafettPrice where shopCode = \'" + mag_number + "\' order by docNumber desc"
+        query = "SELECT distinct docNumber, shopCode from marafettPrice where shopCode = \'" + mag_number + "\' order by docNumber desc"
         result = await sendQuery(query)
         result.recordset.forEach(el=>{
             if(headerCheck(el.docNumber) != undefined){

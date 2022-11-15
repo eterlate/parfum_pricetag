@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { useHttp } from '../hooks/http.hook'
 import { useCookies } from 'react-cookie';
 import ItemStr from '../components/ItemStr';
+import MagStr from '../components/MagStr';
 
 
 
@@ -101,20 +102,14 @@ const MainPage = () => {
         setItems(prev => {
             let newData = [...prev]
             const index = newData.findIndex(el => el.itemCode === itemCode)
-            if (count < 0){
+            if (count < 0) {
                 return prev
             }
             newData[index].count = count
             return newData
         })
     }
-    // const decrement = (itemCode) => {
-    //     setItems(prev => {
-    //         const index = prev.findIndex(el => el.itemCode === itemCode)
-    //         prev[index].count = prev[index].count - 0.5
-    //         return [...prev]
-    //     })
-    // }
+
 
     return (
 
@@ -169,17 +164,22 @@ const MainPage = () => {
                     </tbody>
                 </table>
                 :
-                <div className='list'>
-                    <ul>
-                        {mags.map(el => {
-                            return el.headers.header == '' ?
-                                <li key={el.docNumber}>{el.docNumber}</li>
-                                :
-                                <li key={el.docNumber}>{el.docNumber} --- {el.headers.header}</li>
-                        }
+                mags.length > 0 ?
+                <table id='items'>
+                    <tbody>
+                        <tr>
+                            <th>Документ</th>
+                            <th>Ценник</th>
+                        </tr>
+                        {mags.map(el =>
+
+                            <MagStr key={el.shopCode + el.docNumber} mag={el}></MagStr>
+
                         )}
-                    </ul>
-                </div>
+                    </tbody>
+                </table>
+                :
+                <div></div>
             }
 
         </div>
