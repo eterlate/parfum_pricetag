@@ -5,6 +5,7 @@ function ItemStr(props) {
     return (
 
         <tr>
+            <td>{props.item.ПодКатегория}</td>
             <td>{props.item.itemCode}</td>
             <td>{props.item.itemName}</td>
             <td>

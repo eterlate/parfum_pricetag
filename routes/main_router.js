@@ -30,19 +30,23 @@ router.post('/mag', async (req, res) =>{
 // /find/items
 router.post('/items', async (req, res) =>{
     try{
+        //select distinct itemCode, itemPrice, ПодКатегория, itemName, docDate, itemPriceOld from _vwMarafettPricePrint where shopCode like '"+shopCode+"' and docNumber like '%"+docNumber+"' order by ПодКатегория, itemName"
         const {mag_number, doc_number} = req.body
         headers = headerCheck(doc_number)
         if (!mag_number || !doc_number){
             return res.status(400).json({message: 'Empty fields'})
         }
-        query = "SELECT * from marafettPrice where shopCode = \'" + mag_number + "\' and docNumber = \'" + doc_number + "\'"
+        query = "select distinct itemCode, itemPrice, ПодКатегория, itemName, itemPriceOld from _vwMarafettPricePrint where shopCode like '"+mag_number+"' and docNumber like '%"+doc_number+"' order by ПодКатегория, itemName"
+        console.log(query)
+        // query = "SELECT * from marafettPrice where shopCode = \'" + mag_number + "\' and docNumber = \'" + doc_number + "\'"
         result = await sendQuery(query)
+        docDate = new Date
+        
         result.recordset.forEach(el=>{
             el.percent = percent(el.itemPriceOld, el.itemPrice)
+            el.docDate = new Date
+            el.docDate = formatDate(el.docDate)
             
-            if(el.docDate != null){
-                el.docDate = formatDate(el.docDate)
-            }
             if(el.itemPrice != null){
                 el.itemPrice = formatPrice(el.itemPrice)
             }

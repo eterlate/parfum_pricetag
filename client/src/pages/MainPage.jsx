@@ -176,6 +176,7 @@ const MainPage = () => {
                     <table id='items'>
                         <tbody>
                             <tr>
+                                <th>Подкатегория</th>
                                 <th>Штрих-код</th>
                                 <th>Название</th>
                                 <th>Количество</th>

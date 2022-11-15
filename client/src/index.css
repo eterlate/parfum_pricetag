@@ -25,7 +25,7 @@
 
 
 body {
-    background-color: rgba(221, 0, 255, 0.1);
+    background-color: rgba(221, 0, 255, 0.2);
 }
 
 /* prevent default */
@@ -88,7 +88,7 @@ select {
     display: flex;
     align-items: center;
     margin-top: 30px;
-    background-color: black;
+    /* background-color: white; */
 
     height: 50px;
     border: 1px solid transparent;
@@ -323,15 +323,16 @@ select {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: center;
-    background-image: linear-gradient(to right, rgba(221, 0, 255, 0.5), rgba(21, 0, 255, 0.7));
+    background-image: linear-gradient(to right, rgba(221, 0, 255, 0.5), rgba(221, 0, 255, 0.5));
     color: white;
-}
-#items th:last-child {
-    background-image: linear-gradient(to left, rgba(221, 0, 255, 0.5), rgba(21, 0, 255, 0.7));
 }
 #items th:first-child {
     background-image: linear-gradient(to left, rgba(221, 0, 255, 0.5), rgba(21, 0, 255, 0.7));
 }
+#items th:last-child {
+    background-image: linear-gradient(to right, rgba(221, 0, 255, 0.5), rgba(21, 0, 255, 0.7));
+}
+
 
 .plusminusButton{
     margin: 0 5px;
