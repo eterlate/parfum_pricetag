@@ -60,9 +60,7 @@ const MainPage = () => {
         setItems([])
         removeCookie('searchData')
     }
-    // const changeHandler = event => {
-    //     setForm({ ...form, [event.target.name]: event.target.value })
-    // }
+
     const changeMagHandler = event => {
         setForm({
             mag_number: event.target.value,
@@ -70,14 +68,22 @@ const MainPage = () => {
         })
         setMags([])
         setItems([])
+        setHeaders({
+            header: '',
+            color: ''
+        })
     }
 
     // query
     const docHandler = async (e) => {
         try {
             setItems([])
+            setHeaders({
+                header: '',
+                color: ''
+            })
             e.preventDefault()
-            if(form.mag_number == ''){
+            if (form.mag_number == '') {
                 return
             }
             const data = await request('/find/mag', 'POST', { ...form })
@@ -130,77 +136,76 @@ const MainPage = () => {
 
 
     return (
-
-        <div className='main'>
-            <form className='form' onSubmit={docHandler}>
-                <h1>Ценники</h1>
-                <label htmlFor="mag_number">Номер магазина</label>
-                <div>
-                    <input
-                        type="text"
-                        name='mag_number'
-                        onChange={changeMagHandler}
-                        value={form.mag_number}
-                    />
-                    <button className='searchButton' type='submit' disabled={loading}>Найти документы</button>
+        <>
+            {loading ?
+                <div className='dark'>
+                    <div className="lds-ripple"><div></div><div></div></div>
                 </div>
-
-                {/* <label htmlFor="doc_number">Номер документа</label>
-                <div>
-                    <select value={form.doc_number} onChange={changeHandler} name="doc_number" id="doc_number">
-                        <option value={form.doc_number}>{form.doc_number}</option>
-                        {mags.map(el =>
-                            <option key={el.docNumber} value={el.docNumber}>{el.docNumber}</option>
-                        )}
-                    </select>
-                    <button className='searchButton' onClick={positionsHandler} disabled={loading}>Найти позиции</button>
-                </div> */}
-
-                <Link className='showButton' to='/print' state={items}>Показать маленькие ценники</Link>
-                <Link className='showButton' to='/print_big' state={items}>Показать большие ценники</Link>
-                <button className='searchButton' onClick={clearHandler}>Очистить поля</button>
-            </form>
-
-
-            {headers.header != ''
-                ?
-                <div className='headerBack'><h1 style={headers}>{headers.header}</h1></div>
                 :
                 <div></div>
             }
-            {items.length > 0 ?
-                <table id='items'>
-                    <tbody>
-                        <tr>
-                            <th>Штрих-код</th>
-                            <th>Название</th>
-                            <th>Количество</th>
-                        </tr>
-                        {items.map(el =>
-                            <ItemStr key={el.itemCode} item={el} increment={increment}></ItemStr>
-                        )}
-                    </tbody>
-                </table>
-                :
-                mags.length > 0 ?
+
+
+            <div className='main'>
+                <form className='form' onSubmit={docHandler}>
+                    <h1>Ценники</h1>
+                    <label htmlFor="mag_number">Номер магазина</label>
+                    <div>
+                        <input
+                            type="text"
+                            name='mag_number'
+                            onChange={changeMagHandler}
+                            value={form.mag_number}
+                        />
+                        <button className='searchButton' type='submit' disabled={loading}>Найти документы</button>
+                    </div>
+
+                    <Link className='showButton' to='/print' state={items}>Показать маленькие ценники</Link>
+                    <Link className='showButton' to='/print_big' state={items}>Показать большие ценники</Link>
+                    <button className='searchButton' onClick={clearHandler}>Очистить поля</button>
+                </form>
+
+
+                {headers.header != ''
+                    ?
+                    <div className='headerBack'><h1 style={headers}>{headers.header}</h1></div>
+                    :
+                    <div></div>
+                }
+                {items.length > 0 ?
                     <table id='items'>
                         <tbody>
                             <tr>
-                                <th>Документ</th>
-                                <th>Ценник</th>
+                                <th>Штрих-код</th>
+                                <th>Название</th>
+                                <th>Количество</th>
                             </tr>
-                            {mags.map(el =>
-
-                                <MagStr key={el.shopCode + el.docNumber} mag={el} showItems={showItems}></MagStr>
-
+                            {items.map(el =>
+                                <ItemStr key={el.itemCode} item={el} increment={increment}></ItemStr>
                             )}
                         </tbody>
                     </table>
                     :
-                    <div></div>
-            }
+                    mags.length > 0 ?
+                        <table id='items'>
+                            <tbody>
+                                <tr>
+                                    <th>Документ</th>
+                                    <th style={{ backgroundImage: 'linear-gradient(to right, rgba(221, 0, 255, 0.5), rgba(21, 0, 255, 0.7))' }}>Ценник</th>
+                                </tr>
+                                {mags.map(el =>
 
-        </div>
+                                    <MagStr key={el.shopCode + el.docNumber} mag={el} showItems={showItems}></MagStr>
+
+                                )}
+                            </tbody>
+                        </table>
+                        :
+                        <div></div>
+                }
+
+            </div>
+        </>
     )
 }
 
