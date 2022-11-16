@@ -1,5 +1,6 @@
 /* print page */
 @media print {
+
     .header-left-top,
     .a-right-bottom,
     .time-right-bottom,
@@ -19,7 +20,7 @@
     }
 }
 
-*{
+* {
     font-family: 'Roboto', sans-serif;
 }
 
@@ -110,6 +111,22 @@ select {
     background-color: white;
 }
 
+.showButtonDisabled {
+    display: block;
+    font-size: 14px;
+    text-decoration: none;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    width: 150px;
+    height: 20px;
+    text-align: center;
+    color: black;
+    background-color: gray;
+}
+
+.showButtonDisabled:hover {
+    cursor: not-allowed;
+}
 
 .showButton:hover {
     background-color: rgba(221, 0, 255, 0.4);
@@ -144,7 +161,7 @@ select {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    float:none;
+    float: none;
 }
 
 
@@ -309,10 +326,12 @@ select {
     border: 1px solid #ddd;
     padding: 8px;
 }
-#items tr{
+
+#items tr {
     background-color: white;
     text-align: center;
 }
+
 #items tr:nth-child(even) {
     background-color: #f2f2f2;
 }
@@ -330,15 +349,17 @@ select {
     background-image: linear-gradient(to right, rgba(221, 0, 255, 0.5), rgba(221, 0, 255, 0.5));
     color: white;
 }
+
 #items th:first-child {
     background-image: linear-gradient(to left, rgba(221, 0, 255, 0.5), rgba(21, 0, 255, 0.7));
 }
+
 #items th:last-child {
     background-image: linear-gradient(to right, rgba(221, 0, 255, 0.5), rgba(21, 0, 255, 0.7));
 }
 
 
-.plusminusButton{
+.plusminusButton {
     margin: 0 5px;
     border: 1px solid transparent;
     border-radius: 20px;
@@ -354,54 +375,60 @@ select {
     top: 50%;
     left: 50%;
     margin-left: -150px;
-    margin-top:-150px;
+    margin-top: -150px;
     width: 100px;
     height: 100px;
-    
-    
-  }
-  .lds-ripple div {
+
+
+}
+
+.lds-ripple div {
     position: absolute;
     border: 4px solid #fcf;
     opacity: 1;
     border-radius: 50%;
     animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
-  }
-  .lds-ripple div:nth-child(2) {
-    animation-delay: -0.5s;
-  }
-  @keyframes lds-ripple {
-    0% {
-      top: 148px;
-      left: 148px;
-      width: 0;
-      height: 0;
-      opacity: 0;
-    }
-    4.9% {
-      top: 148px;
-      left: 148px;
-      width: 0;
-      height: 0;
-      opacity: 0;
-    }
-    5% {
-      top: 148px;
-      left: 148px;
-      width: 0;
-      height: 0;
-      opacity: 1;
-    }
-    100% {
-      top: 0px;
-      left: 0px;
-      width: 296px;
-      height: 296px;
-      opacity: 0;
-    }
-  }
+}
 
-  .dark {
+.lds-ripple div:nth-child(2) {
+    animation-delay: -0.5s;
+}
+
+@keyframes lds-ripple {
+    0% {
+        top: 148px;
+        left: 148px;
+        width: 0;
+        height: 0;
+        opacity: 0;
+    }
+
+    4.9% {
+        top: 148px;
+        left: 148px;
+        width: 0;
+        height: 0;
+        opacity: 0;
+    }
+
+    5% {
+        top: 148px;
+        left: 148px;
+        width: 0;
+        height: 0;
+        opacity: 1;
+    }
+
+    100% {
+        top: 0px;
+        left: 0px;
+        width: 296px;
+        height: 296px;
+        opacity: 0;
+    }
+}
+
+.dark {
     transition: 0.5s;
     display: block;
     position: fixed;
@@ -409,8 +436,7 @@ select {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.5);
-    cursor: pointer;
+    background: rgba(0, 0, 0, 0.5);
+    cursor: wait;
     z-index: 9999;
-  }
-  
+}

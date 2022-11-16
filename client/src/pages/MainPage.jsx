@@ -4,7 +4,7 @@ import { useHttp } from '../hooks/http.hook'
 import { useCookies } from 'react-cookie';
 import ItemStr from '../components/ItemStr';
 import MagStr from '../components/MagStr';
-
+import { useNavigate } from 'react-router-dom'
 
 
 const MainPage = () => {
@@ -134,7 +134,6 @@ const MainPage = () => {
         })
     }
 
-
     return (
         <>
             {loading ?
@@ -161,8 +160,18 @@ const MainPage = () => {
                         <button className='searchButton' type='submit' disabled={loading}>Найти документы</button>
                     </div>
                     <div style={{ display: 'flex', flexDirection: 'row' }}>
-                        <Link style={{ marginRight: '10px' }} className='showButton' to='/print' state={items}>Маленькие ценники</Link>
-                        <Link className='showButton' to='/print_big' state={items}>Большие ценники</Link>
+                        {items.length == 0 ?
+                            <>
+                                <Link style={{ marginRight: '10px' }} className='showButtonDisabled' to='/'>Маленькие ценники</Link>
+                                <Link className='showButtonDisabled' to='/'>Большие ценники</Link>
+                            </>
+                            :
+                            <>
+                                <Link style={{ marginRight: '10px' }} className='showButton' to='/print' state={items}>Маленькие ценники</Link>
+                                <Link className='showButton' to='/print_big' state={items}>Большие ценники</Link>
+                            </>
+                        }
+
                     </div>
                     <button className='searchButton' onClick={clearHandler}>Очистить поля</button>
                 </form>
