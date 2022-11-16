@@ -206,7 +206,7 @@ const MainPage = () => {
                             <tbody>
                                 <tr>
                                     <th>Документ</th>
-                                    <th style={{ backgroundImage: 'linear-gradient(to right, rgba(221, 0, 255, 0.5), rgba(21, 0, 255, 0.7))' }}>Ценник</th>
+                                    <th>Ценник</th>
                                 </tr>
                                 {mags.map(el =>
 
