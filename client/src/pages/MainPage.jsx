@@ -179,42 +179,44 @@ const MainPage = () => {
 
                 {headers.header != ''
                     ?
-                    <div className='headerBack'><h1 style={headers}>{headers.header}</h1></div>
+                    <div className='headerBack'><h1 className='tableHeader' style={headers}>{headers.header}</h1></div>
                     :
                     <div></div>
                 }
                 {items.length > 0 ?
                     <>
-                        <h2>Выбранный документ - {form.doc_number}</h2>
-                        <table id='items'>
-                            <tbody>
-                                <tr>
-                                    <th>Подкатегория</th>
-                                    <th>Штрих-код</th>
-                                    <th>Название</th>
-                                    <th>Количество</th>
-                                </tr>
-                                {items.map(el =>
-                                    <ItemStr key={el.itemCode} item={el} increment={increment}></ItemStr>
-                                )}
-                            </tbody>
-                        </table>
+                        <h2 className='tableHeader'>Выбранный документ - {form.doc_number}</h2>
+                        
+                            <table id='items'>
+                                <tbody>
+                                    <tr>
+                                        <th>Подкатегория</th>
+                                        <th>Штрих-код</th>
+                                        <th>Название</th>
+                                        <th>Количество</th>
+                                    </tr>
+                                    {items.map(el =>
+                                        <ItemStr key={el.itemCode} item={el} increment={increment}></ItemStr>
+                                    )}
+                                </tbody>
+                            </table>
                     </>
                     :
                     mags.length > 0 ?
-                        <table id='items'>
-                            <tbody>
-                                <tr>
-                                    <th>Документ</th>
-                                    <th>Ценник</th>
-                                </tr>
-                                {mags.map(el =>
 
-                                    <MagStr key={el.shopCode + el.docNumber} mag={el} showItems={showItems}></MagStr>
+                            <table id='items'>
+                                <tbody>
+                                    <tr>
+                                        <th>Документ</th>
+                                        <th>Ценник</th>
+                                    </tr>
+                                    {mags.map(el =>
 
-                                )}
-                            </tbody>
-                        </table>
+                                        <MagStr key={el.shopCode + el.docNumber} mag={el} showItems={showItems}></MagStr>
+
+                                    )}
+                                </tbody>
+                            </table>
                         :
                         <div></div>
                 }

@@ -86,11 +86,12 @@ select {
     display: flex;
     align-items: center;
     margin-top: 10px;
-    /* background-color: white; */
-
     height: 50px;
     border: 1px solid transparent;
     border-radius: 20px;
+}
+.tableHeader{
+    animation: spawn 2s;
 }
 
 .list {
@@ -318,6 +319,7 @@ select {
     margin: 30px;
     border-collapse: collapse;
     width: 100%;
+    animation: fromRight 1s;
 }
 
 #items td,
@@ -439,3 +441,22 @@ select {
     cursor: wait;
     z-index: 9999;
 }
+
+/* --------------------------------------------------------------------------------loader */
+@keyframes fromRight{
+    0%{
+        position: relative;
+        left: 1000px;
+    }
+    99%{
+        position: relative;
+        left: 0px;
+    }
+    100%{
+        position: initial;
+    }
+}
+
+@keyframes spawn {
+    from {color: transparent;}
+  }

@@ -9,7 +9,7 @@ function PrintPage() {
     const location = useLocation()
     const items = location.state
     let row = 0
-
+        
     return (
         <div className='tagContainer'>
             <a style={{ margin: '0 250px', color: 'black', textDecoration: 'none' }} href="javascript:(print());">Печать</a>
