@@ -242,44 +242,49 @@ select {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: center;
+    text-align: center;
+    flex-wrap: nowrap;
+}
+
+.priceTagBigDisc{
+    background-color: white;
+    border: 1px solid black;
+    width: 400px;
+    height: 180px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     text-align: center;
     flex-wrap: nowrap;
 }
 
 .priceTagBottomBig {
     display: flex;
-    flex-direction: row;
-    width: 200px;
-    margin-left: 50%;
     justify-content: space-between;
 }
 
 /* fields */
 #itemNameBig {
-    font-size: 15px;
+    font-size: 14px;
     font-family: 'Times New Roman', Times, serif;
     font-weight: normal;
-    width: 180px;
-    height: 65px;
+    height: 28px;
     overflow: hidden;
 }
 
 #percentBig {
-    font-size: 20px;
+    font-size: 80px;
     font-family: Arial, Helvetica, sans-serif;
 }
 
 #itemPriceBig {
-    /* width: 200px; */
-    font-size: 55px;
+    font-size: 90px;
     font-family: 'Times New Roman', Times, serif;
 }
 
 #itemPrice1Big {
-    font-size: 34px;
+    font-size: 57px;
     font-family: 'Times New Roman', Times, serif;
-    height: 40px;
 }
 
 #docDateBig {
@@ -295,22 +300,17 @@ select {
 }
 
 #oldPriceBig {
-    font-size: 26px;
+    font-size: 45px;
     font-family: 'Times New Roman', Times, serif;
     text-decoration: line-through solid rgba(0, 0, 0, 0.75) 1px;
-    height: 39px;
+    height: 60px;
 }
 
 #oldPriceHeaderBig {
+    font-family: 'Times New Roman', Times, serif;
     font-size: 14px;
-}
-
-.top {
-    justify-content: space-between;
-    margin-top: 55px;
-    display: flex;
-    flex-direction: row;
-    width: 400px;
+    font-weight: normal;
+    height: 7px;
 }
 
 
