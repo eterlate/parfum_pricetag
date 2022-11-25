@@ -1,6 +1,5 @@
 const {Router}= require('express')
 const router = Router()
-const config = require('config')
 const {sendQuery} = require('../db')
 const {formatDate, formatPrice, percent, headerCheck} = require('../format_functions')
 

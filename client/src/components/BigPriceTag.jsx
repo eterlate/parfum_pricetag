@@ -27,7 +27,7 @@ function BigPriceTag(props) {
 
                                 </div>
                                 <div style={{ width: '200px' }}>
-                                    <h1 id='itemPrice1Big'>{props.item.itemPrice}</h1>
+                                    <h1 id='itemPriceMin10Big'>{props.item.itemPrice}</h1>
                                 </div>
                             </>
 

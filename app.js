@@ -1,6 +1,5 @@
 const express = require('express')
 const config = require('config')
-// const {sendQuery} = require('./db')
 const path = require('path')
 const app = express()
 const cookieParser = require('cookie-parser')
