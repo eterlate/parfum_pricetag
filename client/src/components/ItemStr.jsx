@@ -1,7 +1,7 @@
 import React from 'react'
 
 function ItemStr(props) {
-    
+
     return (
 
         <tr>
@@ -9,9 +9,9 @@ function ItemStr(props) {
             <td>{props.item.itemCode}</td>
             <td>{props.item.itemName}</td>
             <td>
-                <button className='plusminusButton' onClick={()=>props.increment(props.item.itemCode, props.item.count - 1)}>-</button>
+                <button className='plusminusButton' onClick={() => props.increment(props.item.itemCode, props.item.count - 1)}>-</button>
                 {props.item.count}
-                <button className='plusminusButton' onClick={()=>props.increment(props.item.itemCode, props.item.count + 1)}>+</button>
+                <button className='plusminusButton' onClick={() => props.increment(props.item.itemCode, props.item.count + 1)}>+</button>
             </td>
         </tr>
 

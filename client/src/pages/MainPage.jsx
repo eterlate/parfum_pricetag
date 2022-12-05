@@ -39,7 +39,6 @@ const MainPage = () => {
             }
             refreshHandler()
         }
-
     }, []);
 
     useEffect(() => {
@@ -91,6 +90,7 @@ const MainPage = () => {
             setCookie('searchData', form, { path: '/' })
         } catch (e) { }
     }
+
     const positionsHandler = async () => {
         try {
             if (form.doc_number == '' || form.mag_number == '') {
@@ -203,7 +203,6 @@ const MainPage = () => {
                     </>
                     :
                     mags.length > 0 ?
-
                             <table id='items'>
                                 <tbody>
                                     <tr>
@@ -211,9 +210,7 @@ const MainPage = () => {
                                         <th>Ценник</th>
                                     </tr>
                                     {mags.map(el =>
-
                                         <MagStr key={el.shopCode + el.docNumber} mag={el} showItems={showItems}></MagStr>
-
                                     )}
                                 </tbody>
                             </table>

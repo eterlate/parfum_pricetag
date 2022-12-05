@@ -10,8 +10,7 @@ function BigPriceTag(props) {
                         {props.item.percent > 10 ?
                             <>
                                 <div style={{ width: '200px' }}>
-                                    
-                                    <h1 style={{marginBottom:'9px'}} id='itemPrice1Big'>{props.item.itemPrice}</h1>
+                                    <h1 style={{ marginBottom: '9px' }} id='itemPrice1Big'>{props.item.itemPrice}</h1>
                                     <h1 id='oldPriceHeaderBig'>старая цена</h1>
                                     <h1 id='oldPriceBig'>{props.item.itemPriceOld}</h1>
                                 </div>
@@ -23,17 +22,14 @@ function BigPriceTag(props) {
                             <>
                                 <div style={{ width: '200px' }}>
                                     <h1 id='oldPriceHeaderBig'>старая цена</h1>
-                                    <h1 style={{marginBottom:'-4px'}} id='oldPriceBig'>{props.item.itemPriceOld}</h1>
+                                    <h1 style={{ marginBottom: '-4px' }} id='oldPriceBig'>{props.item.itemPriceOld}</h1>
 
                                 </div>
                                 <div style={{ width: '200px' }}>
                                     <h1 id='itemPriceMin10Big'>{props.item.itemPrice}</h1>
                                 </div>
                             </>
-
-
                         }
-
                     </div>
                     <div className='priceTagBottomBig'>
                         <h1 id='docDateBig'>{props.item.docDate}</h1>
