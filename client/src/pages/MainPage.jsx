@@ -4,7 +4,6 @@ import { useHttp } from '../hooks/http.hook'
 import { useCookies } from 'react-cookie';
 import ItemStr from '../components/ItemStr';
 import MagStr from '../components/MagStr';
-import { useNavigate } from 'react-router-dom'
 
 
 const MainPage = () => {
