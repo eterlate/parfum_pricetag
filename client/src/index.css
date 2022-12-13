@@ -190,10 +190,10 @@ select {
 
 /* fields */
 #itemName {
-    font-size: 10px;
+    font-size: 11px;
     font-family: 'Times New Roman', Times, serif;
     font-weight: normal;
-    height: 44px;
+    height: 38px;
     overflow: hidden;
 }
 
@@ -215,13 +215,13 @@ select {
 }
 
 #docDate {
-    font-size: 8px;
+    font-size: 10px;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: normal;
 }
 
 #itemCode {
-    font-size: 8px;
+    font-size: 10px;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: normal;
 }
@@ -246,18 +246,6 @@ select {
     height: 180px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    text-align: center;
-    flex-wrap: nowrap;
-}
-
-.priceTagBigDisc{
-    background-color: white;
-    border: 1px solid black;
-    width: 400px;
-    height: 180px;
-    display: flex;
-    flex-direction: row;
     justify-content: space-between;
     text-align: center;
     flex-wrap: nowrap;
@@ -325,6 +313,86 @@ select {
     font-size: 14px;
     font-weight: normal;
     height: 7px;
+}
+
+/* --------------------------------------------------------------------------------medium pricetag */
+.priceTagMedium {
+    background-color: white;
+    border: 1px solid black;
+    width: 222px;
+    height: 181px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    flex-wrap: nowrap;
+}
+
+.priceTagBottomMedium {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* fields */
+#itemNameMedium {
+    font-size: 14px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: normal;
+    height: 31px;
+    overflow: hidden;
+}
+
+#percentMedium {
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    /* background: rgba(0, 0, 0, 0.2);
+    border-radius: 20px; */
+    transform: scale(1, 1.2);
+    margin-left: 12px;
+    margin-bottom: 10px;
+}
+
+#itemPriceMedium {
+    font-size: 50px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#itemPrice1Medium {
+    font-size: 40px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#itemPriceMin10Medium {
+    transform: scale(1, 1.3);
+    font-size: 37px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#docDateMedium {
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+}
+
+#itemCodeMedium {
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+}
+
+#oldPriceMedium {
+    font-size: 30px;
+    font-family: 'Times New Roman', Times, serif;
+    text-decoration: line-through solid rgba(0, 0, 0, 0.75) 1px;
+    height: 32px;
+    margin-left: 10px;
+}
+
+#oldPriceHeaderMedium {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 14px;
+    font-weight: normal;
+    height: 14px;
 }
 
 

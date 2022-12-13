@@ -162,11 +162,14 @@ const MainPage = () => {
                         {items.length == 0 ?
                             <>
                                 <Link style={{ marginRight: '10px' }} className='showButtonDisabled' to='/'>Маленькие ценники</Link>
+                                <Link style={{ marginRight: '10px' }} className='showButtonDisabled' to='/'>Средние ценники</Link>
                                 <Link className='showButtonDisabled' to='/'>Большие ценники</Link>
+                                
                             </>
                             :
                             <>
                                 <Link style={{ marginRight: '10px' }} className='showButton' to='/print' state={items}>Маленькие ценники</Link>
+                                <Link style={{ marginRight: '10px' }} className='showButton' to='/print_medium' state={items}>Средние ценники</Link>
                                 <Link className='showButton' to='/print_big' state={items}>Большие ценники</Link>
                             </>
                         }
