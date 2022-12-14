@@ -21,7 +21,7 @@ function PrintMediumPage() {
                         mass.push(
                             <MediumPriceTag key={el.itemCode + i} item={el}></MediumPriceTag>
                         )
-                        if (row == 14) {
+                        if (row == 28) {
                             mass.push(
                                 <div key={el.itemCode + i + 'pagebreak'} className='pagebreak'></div>
                             )
