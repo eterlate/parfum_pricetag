@@ -23,7 +23,6 @@ const MainPage = () => {
     const [items, setItems] = useState([])
 
 
-
     useEffect(() => {
         if ('searchData' in cookies) {
             setForm({

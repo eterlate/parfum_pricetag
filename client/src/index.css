@@ -26,10 +26,15 @@
 }
 
 * {
-    font-family: 'Roboto', sans-serif;
+    /* font-family: 'Roboto', sans-serif; */
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
-
+font{
+    vertical-align: baseline;
+}
 body {
     background-color: rgba(0, 0, 255, 0.2);
 }
@@ -95,7 +100,8 @@ select {
     border: 1px solid transparent;
     border-radius: 20px;
 }
-.tableHeader{
+
+.tableHeader {
     animation: spawn 2s;
 }
 
@@ -366,7 +372,7 @@ select {
 #itemPriceMin10Medium {
     transform: scale(1, 1.5);
     font-size: 36px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial;
 }
 
 #docDateMedium {
@@ -382,7 +388,7 @@ select {
 }
 
 #oldPriceMedium {
-    font-size: 28px;
+    font-size: 27px;
     font-family: 'Times New Roman', Times, serif;
     text-decoration: line-through solid rgba(0, 0, 0, 0.75) 1px;
     height: 32px;
@@ -430,7 +436,7 @@ select {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: center;
-    background-image: linear-gradient( rgba(0, 0, 255, 0.35), rgba(0, 0, 255, 0.35));
+    background-image: linear-gradient(rgba(0, 0, 255, 0.35), rgba(0, 0, 255, 0.35));
     color: white;
 }
 
@@ -526,20 +532,24 @@ select {
 }
 
 /* --------------------------------------------------------------------------------animations */
-@keyframes fromRight{
-    0%{
+@keyframes fromRight {
+    0% {
         position: relative;
         left: 1000px;
     }
-    99%{
+
+    99% {
         position: relative;
         left: 0px;
     }
-    100%{
+
+    100% {
         position: initial;
     }
 }
 
 @keyframes spawn {
-    from {color: transparent;}
-  }
+    from {
+        color: transparent;
+    }
+}
