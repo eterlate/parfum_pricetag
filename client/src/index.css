@@ -13,6 +13,11 @@
         height: 170px;
         color: white;
     }
+    .pagebreakMedium {
+        width: 100%;
+        height: 180px;
+        color: white;
+    }
 
     .tagContainer {
         margin-top: 20px;

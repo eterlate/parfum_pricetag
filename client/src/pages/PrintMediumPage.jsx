@@ -23,7 +23,7 @@ function PrintMediumPage() {
                         )
                         if (row == 28) {
                             mass.push(
-                                <div key={el.itemCode + i + 'pagebreak'} className='pagebreak'></div>
+                                <div key={el.itemCode + i + 'pagebreak'} className='pagebreakMedium'></div>
                             )
                             row = 0
                         }
