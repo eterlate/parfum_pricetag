@@ -45,6 +45,7 @@ const MainPage = () => {
 
     //handlers
     const clearHandler = () => {
+        console.log(items)
         setForm({
             mag_number: '',
             doc_number: ''
@@ -144,9 +145,12 @@ const MainPage = () => {
 
 
             <div className='main'>
+                
                 <form className='form' onSubmit={docHandler}>
-                    <h1>Ценники</h1>
-                    <label htmlFor="mag_number">Номер магазина</label>
+                
+                    <h1>Поиск по магазину</h1>
+                    <Link className='barcodeButton' to='/find' >Найти по штрих-коду</Link>
+                    <label htmlFor="mag_number" style={{paddingTop:'10px'}}>Номер магазина</label>
                     <div>
                         <input
                             type="text"
@@ -157,6 +161,7 @@ const MainPage = () => {
                         />
                         <button className='searchButton' type='submit' disabled={loading}>Найти документы</button>
                     </div>
+                    
                     <div style={{ display: 'flex', flexDirection: 'row' }}>
                         {items.length == 0 ?
                             <>

@@ -2,17 +2,20 @@ import React from 'react'
 import { useLocation } from 'react-router-dom'
 import BigPriceTag from '../components/BigPriceTag'
 import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 function PrintBigPage() {
     const location = useLocation()
     let row = 0
     const items = location.state
-
+    const navigate = useNavigate();
     
     return (
         <div className='tagContainer'>
-            <a style={{ margin: '0 250px', color: 'black', textDecoration: 'none' }} href="javascript:(print());">Печать</a>
-            <Link style={{ color: 'black', textDecoration: 'none' }} to='/'>Назад</Link>
+            <div className='printPageButtons'>
+                <a href="javascript:(print());">Печать</a>
+                <button onClick={() => navigate(-1)}>Назад</button>
+            </div>
             <div className='rowTags'>
                 {items.map(el => {
                     let mass = []
