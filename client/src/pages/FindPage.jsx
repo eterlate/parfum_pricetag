@@ -1,13 +1,16 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useHttp } from '../hooks/http.hook'
 import moment from 'moment';
 import TagStr from '../components/TagStr';
 import { Link } from 'react-router-dom'
+import { useCookies } from 'react-cookie';
 
 const FindPage = () => {
     const { loading, error, request } = useHttp()
     const [items, setItems] = useState([])
+
+    const [cookies, setCookie, removeCookie] = useCookies(['searchBarData']);
 
     const [form, setForm] = useState({
         barcode: '',
@@ -15,6 +18,43 @@ const FindPage = () => {
         curr_date: '',
         prev_date: ''
     })
+
+    useEffect(() => {
+        if ('searchBarData' in cookies) {
+            let now = moment().format('YYYY-MM-DD') + "T00:00:00.000Z"
+            let minusNow = moment().subtract(5, 'd').format('YYYY-MM-DD') + "T00:00:00.000Z"
+            setForm({
+                barcode: cookies.searchBarData.barcode,
+                mag: cookies.searchBarData.mag,
+                curr_date: now,
+                prev_date: minusNow
+            })
+            const refreshHandler = async () => {
+                try {
+                    let formData = {
+                        barcode: cookies.searchBarData.barcode,
+                        mag: cookies.searchBarData.mag,
+                        curr_date: now,
+                        prev_date: minusNow
+                    }
+                    request('/find/barcode', 'POST', { ...formData }).then(data => {
+                        if (typeof (data) == 'string') {
+                            alert(data)
+                            return
+                        }
+                        data.count = 1
+                        let index = items.findIndex(el => el.itemCode == data.itemCode)
+                        if (index != -1) {
+                            increment(data.itemCode, items[index].count + 1)
+                        } else {
+                            setItems([...items, data])
+                        }
+                    })
+                } catch (e) { }
+            }
+            refreshHandler()
+        }
+    }, []);
 
     const changeFormHandler = (e) => {
         let now = moment().format('YYYY-MM-DD') + "T00:00:00.000Z"
@@ -27,9 +67,9 @@ const FindPage = () => {
     const submitHandler = async (e) => {
         e.preventDefault()
         // 3600542232012
-        if (form.barcode && form.mag != 0){
+        if (form.barcode && form.mag != 0) {
             request('/find/barcode', 'POST', { ...form }).then(data => {
-                if (typeof(data) == 'string'){
+                if (typeof (data) == 'string') {
                     alert(data)
                     return
                 }
@@ -41,11 +81,12 @@ const FindPage = () => {
                     setItems([...items, data])
                 }
             })
+            setCookie('searchBarData', form, { path: '/' })
         }
-        else{
+        else {
             alert('Заполните поля')
         }
-        
+
     }
 
     const clearHandler = () => {
@@ -56,6 +97,7 @@ const FindPage = () => {
             curr_date: '',
             prev_date: ''
         })
+        removeCookie('searchBarData')
     }
 
     const increment = (itemCode, count) => {
@@ -89,6 +131,7 @@ const FindPage = () => {
                         name='barcode'
                         onChange={changeFormHandler}
                         value={form.barcode}
+                        placeholder='Введите штрих-код'
                     />
 
                     <label htmlFor="mag">Номер магазина</label>
@@ -97,6 +140,7 @@ const FindPage = () => {
                         name='mag'
                         onChange={changeFormHandler}
                         value={form.mag}
+                        placeholder='Введите номер магазина'
                     />
 
                     <div style={{ display: 'flex', flexDirection: 'row' }}>

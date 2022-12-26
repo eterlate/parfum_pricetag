@@ -45,7 +45,6 @@ const MainPage = () => {
 
     //handlers
     const clearHandler = () => {
-        console.log(items)
         setForm({
             mag_number: '',
             doc_number: ''
@@ -158,6 +157,7 @@ const MainPage = () => {
                             onChange={changeMagHandler}
                             value={form.mag_number}
                             style={{ marginRight: '10px' }}
+                            placeholder='Введите номер'
                         />
                         <button className='searchButton' type='submit' disabled={loading}>Найти документы</button>
                     </div>
