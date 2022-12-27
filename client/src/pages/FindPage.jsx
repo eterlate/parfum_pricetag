@@ -124,16 +124,6 @@ const FindPage = () => {
             <div className='main'>
                 <form className='form_find' onSubmit={submitHandler}>
                     <h1>Поиск по штрих-коду</h1>
-                    <Link className='barcodeButton' to='/'>Найти по магазину</Link>
-                    <label htmlFor="barcode">Штрих-код</label>
-                    <input
-                        type="text"
-                        name='barcode'
-                        onChange={changeFormHandler}
-                        value={form.barcode}
-                        placeholder='Введите штрих-код'
-                    />
-
                     <label htmlFor="mag">Номер магазина</label>
                     <input
                         type="text"
@@ -143,7 +133,18 @@ const FindPage = () => {
                         placeholder='Введите номер магазина'
                     />
 
-                    <div style={{ display: 'flex', flexDirection: 'row' }}>
+                    <label htmlFor="barcode">Штрих-код</label>
+                    <input
+                        type="text"
+                        name='barcode'
+                        onChange={changeFormHandler}
+                        value={form.barcode}
+                        placeholder='Введите штрих-код'
+                    />
+
+                    <button className='searchButton' type='submit' disabled={loading}>Добавить</button>
+
+                    <div style={{ display: 'flex', flexDirection: 'row', marginTop:'20px' }}>
                         {items.length == 0 ?
                             <>
                                 <Link style={{ marginRight: '10px' }} className='showButtonDisabled' to='/find'>Маленькие ценники</Link>
@@ -161,7 +162,7 @@ const FindPage = () => {
 
                     </div>
 
-                    <button className='searchButton' type='submit' disabled={loading}>Добавить</button>
+                    
                     <button type='button' className='searchButton' onClick={clearHandler}>Очистить поля</button>
 
                 </form>

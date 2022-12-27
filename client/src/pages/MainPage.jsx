@@ -148,7 +148,6 @@ const MainPage = () => {
                 <form className='form' onSubmit={docHandler}>
                 
                     <h1>Поиск по магазину</h1>
-                    <Link className='barcodeButton' to='/find' >Найти по штрих-коду</Link>
                     <label htmlFor="mag_number" style={{paddingTop:'10px'}}>Номер магазина</label>
                     <div>
                         <input

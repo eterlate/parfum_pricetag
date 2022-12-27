@@ -26,7 +26,7 @@ function PrintBigPage() {
                         )
                         if (row == 14) {
                             mass.push(
-                                <div key={el.itemCode + i + 'pagebreak'} className='pagebreak'></div>
+                                <div key={el.itemCode + i + 'pagebreak'} className='pagebreakBig'></div>
                             )
                             row = 0
                         }

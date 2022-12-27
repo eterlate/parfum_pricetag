@@ -1,21 +1,25 @@
 /* print page */
 @media print {
-
     .header-left-top,
     .a-right-bottom,
     .time-right-bottom,
-    a {
+    a, div#header {
         display: none;
     }
 
     .pagebreak {
         width: 100%;
-        height: 170px;
+        height: 180px;
         color: white;
     }
     .pagebreakMedium {
         width: 100%;
         height: 180px;
+        color: white;
+    }
+    .pagebreakBig {
+        width: 100%;
+        height: 185px;
         color: white;
     }
 
@@ -28,6 +32,13 @@
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
     }
+    .tagContainer .printPageButtons{
+        display: none;
+    }
+    header h1{
+        display: none;
+    }
+    
 }
 
 * {
@@ -62,6 +73,7 @@ dd {
     margin: 0;
 }
 
+
 /* main page */
 .main {
     width: 1300px;
@@ -83,6 +95,37 @@ dd {
     align-items: center;
     background-image: linear-gradient(45deg, rgba(21, 0, 255, 0.2), rgba(21, 0, 255, 0.5));
     border-radius: 30px;
+}
+
+header{
+    height: 50px;
+    background-image: linear-gradient(45deg, rgba(21, 0, 255, 0.2), rgba(21, 0, 255, 0.2));
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav_block{
+    display: flex;
+    justify-content: center;
+    /* width: 300px; */
+}
+
+.navlink{
+    /* margin-right: 20px; */
+    font-size: 18px;
+    background-color: transparent;
+    width: 200px;
+    text-decoration: none;
+    color: black;
+}
+.nav_block:first-child{
+    text-align: left;
+}
+
+.nav_block:last-child{
+    text-align: right;
 }
 
 .form input,
@@ -224,7 +267,7 @@ select {
     justify-content: space-between;
     width: 400px;
 }
-.printPageButtons button, a{
+.printPageButtons button{
     display: flex;
     justify-content: center;
     width: 100px;
@@ -239,7 +282,21 @@ select {
     align-items: center;
     cursor: pointer;
 }
-
+.printPageButtons a{
+    display: flex;
+    justify-content: center;
+    width: 100px;
+    height: 30px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    background-color: white;
+    text-decoration: none;
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    align-items: center;
+    cursor: pointer;
+}
 
 
 /* --------------------------------------------------------------------------------small pricetag */
