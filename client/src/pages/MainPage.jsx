@@ -179,7 +179,7 @@ const MainPage = () => {
                             }
 
                         </div>
-                        <button className='searchButton' onClick={clearHandler}>Очистить поля</button>
+                        <button type='button' className='searchButton' onClick={clearHandler}>Очистить поля</button>
                     </form>
 
 
