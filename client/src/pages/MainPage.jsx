@@ -144,54 +144,54 @@ const MainPage = () => {
 
 
             <div className='main'>
-                
-                <form className='form' onSubmit={docHandler}>
-                
-                    <h1>Поиск по магазину</h1>
-                    <label htmlFor="mag_number" style={{paddingTop:'10px'}}>Номер магазина</label>
-                    <div>
-                        <input
-                            type="text"
-                            name='mag_number'
-                            onChange={changeMagHandler}
-                            value={form.mag_number}
-                            style={{ marginRight: '10px' }}
-                            placeholder='Введите номер'
-                        />
-                        <button className='searchButton' type='submit' disabled={loading}>Найти документы</button>
-                    </div>
-                    
-                    <div style={{ display: 'flex', flexDirection: 'row' }}>
-                        {items.length == 0 ?
-                            <>
-                                <Link style={{ marginRight: '10px' }} className='showButtonDisabled' to='/'>Маленькие ценники</Link>
-                                <Link style={{ marginRight: '10px' }} className='showButtonDisabled' to='/'>Средние ценники</Link>
-                                <Link className='showButtonDisabled' to='/'>Большие ценники</Link>
-                                
-                            </>
-                            :
-                            <>
-                                <Link style={{ marginRight: '10px' }} className='showButton' to='/print' state={items}>Маленькие ценники</Link>
-                                <Link style={{ marginRight: '10px' }} className='showButton' to='/print_medium' state={items}>Средние ценники</Link>
-                                <Link className='showButton' to='/print_big' state={items}>Большие ценники</Link>
-                            </>
-                        }
+                <div className='mainPage'>
+                    <form className='form' onSubmit={docHandler}>
 
-                    </div>
-                    <button className='searchButton' onClick={clearHandler}>Очистить поля</button>
-                </form>
+                        <h1>Поиск по магазину</h1>
+                        <label htmlFor="mag_number" style={{ paddingTop: '10px' }}>Номер магазина</label>
+                        <div>
+                            <input
+                                type="text"
+                                name='mag_number'
+                                onChange={changeMagHandler}
+                                value={form.mag_number}
+                                style={{ marginRight: '10px' }}
+                                placeholder='Введите номер'
+                            />
+                            <button className='searchButton' type='submit' disabled={loading}>Найти документы</button>
+                        </div>
+
+                        <div style={{ display: 'flex', flexDirection: 'row' }}>
+                            {items.length == 0 ?
+                                <>
+                                    <Link style={{ marginRight: '10px' }} className='showButtonDisabled' to='/'>Маленькие ценники</Link>
+                                    <Link style={{ marginRight: '10px' }} className='showButtonDisabled' to='/'>Средние ценники</Link>
+                                    <Link className='showButtonDisabled' to='/'>Большие ценники</Link>
+
+                                </>
+                                :
+                                <>
+                                    <Link style={{ marginRight: '10px' }} className='showButton' to='/print' state={items}>Маленькие ценники</Link>
+                                    <Link style={{ marginRight: '10px' }} className='showButton' to='/print_medium' state={items}>Средние ценники</Link>
+                                    <Link className='showButton' to='/print_big' state={items}>Большие ценники</Link>
+                                </>
+                            }
+
+                        </div>
+                        <button className='searchButton' onClick={clearHandler}>Очистить поля</button>
+                    </form>
 
 
-                {headers.header != ''
-                    ?
-                    <div className='headerBack'><h1 className='tableHeader' style={headers}>{headers.header}</h1></div>
-                    :
-                    <div></div>
-                }
-                {items.length > 0 ?
-                    <>
-                        <h2 className='tableHeader'>Выбранный документ - {form.doc_number}</h2>
-                        
+                    {headers.header != ''
+                        ?
+                        <div className='headerBack'><h1 className='tableHeader' style={headers}>{headers.header}</h1></div>
+                        :
+                        <div></div>
+                    }
+                    {items.length > 0 ?
+                        <>
+                            <h2 className='tableHeader'>Выбранный документ - {form.doc_number}</h2>
+
                             <table id='items'>
                                 <tbody>
                                     <tr>
@@ -205,9 +205,9 @@ const MainPage = () => {
                                     )}
                                 </tbody>
                             </table>
-                    </>
-                    :
-                    mags.length > 0 ?
+                        </>
+                        :
+                        mags.length > 0 ?
                             <table id='items'>
                                 <tbody>
                                     <tr>
@@ -219,10 +219,10 @@ const MainPage = () => {
                                     )}
                                 </tbody>
                             </table>
-                        :
-                        <div></div>
-                }
-
+                            :
+                            <div></div>
+                    }
+                </div>
             </div>
         </>
     )

@@ -76,11 +76,28 @@ dd {
 
 /* main page */
 .main {
-    width: 1300px;
-    margin: 0 auto;
-    display: flex;
+    max-width: 1170px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 16px;
+    padding-right: 16px;
+    /* display: flex;
     justify-content: center;
     flex-direction: column;
+    align-items: center; */
+}
+
+.mainPage{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.findPage{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
 }
 
@@ -110,6 +127,7 @@ header{
     display: flex;
     justify-content: center;
     /* width: 300px; */
+    text-align: center;
 }
 
 .navlink{

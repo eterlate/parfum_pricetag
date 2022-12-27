@@ -122,73 +122,75 @@ const FindPage = () => {
                 <div></div>
             }
             <div className='main'>
-                <form className='form_find' onSubmit={submitHandler}>
-                    <h1>Поиск по штрих-коду</h1>
-                    <label htmlFor="mag">Номер магазина</label>
-                    <input
-                        type="text"
-                        name='mag'
-                        onChange={changeFormHandler}
-                        value={form.mag}
-                        placeholder='Введите номер магазина'
-                    />
+                <div className='findPage'>
+                    <form className='form_find' onSubmit={submitHandler}>
+                        <h1>Поиск по штрих-коду</h1>
+                        <label htmlFor="mag">Номер магазина</label>
+                        <input
+                            type="text"
+                            name='mag'
+                            onChange={changeFormHandler}
+                            value={form.mag}
+                            placeholder='Введите номер магазина'
+                        />
 
-                    <label htmlFor="barcode">Штрих-код</label>
-                    <input
-                        type="text"
-                        name='barcode'
-                        onChange={changeFormHandler}
-                        value={form.barcode}
-                        placeholder='Введите штрих-код'
-                    />
+                        <label htmlFor="barcode">Штрих-код</label>
+                        <input
+                            type="text"
+                            name='barcode'
+                            onChange={changeFormHandler}
+                            value={form.barcode}
+                            placeholder='Введите штрих-код'
+                        />
 
-                    <button className='searchButton' type='submit' disabled={loading}>Добавить</button>
+                        <button className='searchButton' type='submit' disabled={loading}>Добавить</button>
 
-                    <div style={{ display: 'flex', flexDirection: 'row', marginTop:'20px' }}>
-                        {items.length == 0 ?
-                            <>
-                                <Link style={{ marginRight: '10px' }} className='showButtonDisabled' to='/find'>Маленькие ценники</Link>
-                                <Link style={{ marginRight: '10px' }} className='showButtonDisabled' to='/find'>Средние ценники</Link>
-                                <Link className='showButtonDisabled' to='/find'>Большие ценники</Link>
+                        <div style={{ display: 'flex', flexDirection: 'row', marginTop: '20px' }}>
+                            {items.length == 0 ?
+                                <>
+                                    <Link style={{ marginRight: '10px' }} className='showButtonDisabled' to='/find'>Маленькие ценники</Link>
+                                    <Link style={{ marginRight: '10px' }} className='showButtonDisabled' to='/find'>Средние ценники</Link>
+                                    <Link className='showButtonDisabled' to='/find'>Большие ценники</Link>
 
-                            </>
-                            :
-                            <>
-                                <Link style={{ marginRight: '10px' }} className='showButton' to='/print' state={items}>Маленькие ценники</Link>
-                                <Link style={{ marginRight: '10px' }} className='showButton' to='/print_medium' state={items}>Средние ценники</Link>
-                                <Link className='showButton' to='/print_big' state={items}>Большие ценники</Link>
-                            </>
-                        }
+                                </>
+                                :
+                                <>
+                                    <Link style={{ marginRight: '10px' }} className='showButton' to='/print' state={items}>Маленькие ценники</Link>
+                                    <Link style={{ marginRight: '10px' }} className='showButton' to='/print_medium' state={items}>Средние ценники</Link>
+                                    <Link className='showButton' to='/print_big' state={items}>Большие ценники</Link>
+                                </>
+                            }
 
-                    </div>
-
-                    
-                    <button type='button' className='searchButton' onClick={clearHandler}>Очистить поля</button>
-
-                </form>
+                        </div>
 
 
-                {items.length != 0 ?
-                    <>
-                        <table id='items'>
-                            <tbody>
-                                <tr>
-                                    <th>Штрих-код</th>
-                                    <th>Цвет</th>
-                                    <th>Название</th>
-                                    <th>В наличии</th>
-                                    <th>Цена</th>
-                                    <th>Количество</th>
-                                </tr>
-                                {items.map(el =>
-                                    <TagStr item={el} increment={increment} />
-                                )}
-                            </tbody>
-                        </table>
-                    </>
-                    :
-                    <></>
-                }
+                        <button type='button' className='searchButton' onClick={clearHandler}>Очистить поля</button>
+
+                    </form>
+
+
+                    {items.length != 0 ?
+                        <>
+                            <table id='items'>
+                                <tbody>
+                                    <tr>
+                                        <th>Штрих-код</th>
+                                        <th>Цвет</th>
+                                        <th>Название</th>
+                                        <th>В наличии</th>
+                                        <th>Цена</th>
+                                        <th>Количество</th>
+                                    </tr>
+                                    {items.map(el =>
+                                        <TagStr key={el.itemCode + el.count} item={el} increment={increment} />
+                                    )}
+                                </tbody>
+                            </table>
+                        </>
+                        :
+                        <></>
+                    }
+                </div>
             </div>
         </>
     )
