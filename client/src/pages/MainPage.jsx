@@ -81,6 +81,7 @@ const MainPage = () => {
             })
             e.preventDefault()
             if (form.mag_number == '') {
+                alert('Заполните поле')
                 return
             }
             const data = await request('/find/mag', 'POST', { ...form })
